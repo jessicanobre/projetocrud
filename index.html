@@ -3,22 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HealthBoost: Transforme seus Hábitos</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>HealthBoost: Sua Jornada Saudável</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #2E7D32;
-            --primary-light: #4CAF50;
-            --secondary: #1565C0;
-            --accent: #FF9800;
-            --light: #F5F5F5;
-            --dark: #333333;
-            --gray: #757575;
-            --success: #388E3C;
-            --warning: #FBC02D;
-            --danger: #D32F2F;
-            --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            --primary: #2563EB;
+            --primary-light: #3B82F6;
+            --primary-dark: #1D4ED8;
+            --secondary: #10B981;
+            --accent: #F59E0B;
+            --light: #F8FAFC;
+            --dark: #1E293B;
+            --gray: #64748B;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+            --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
         }
         
         * {
@@ -29,23 +31,27 @@
         
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #f8fafc;
+            background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%);
             color: var(--dark);
             line-height: 1.6;
+            min-height: 100vh;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 20px;
         }
         
         /* Header Styles */
         header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: white;
             padding: 15px 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         
         .header-content {
@@ -57,14 +63,15 @@
         .logo {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
-            font-size: 24px;
+            font-size: 26px;
             display: flex;
             align-items: center;
         }
         
         .logo i {
-            margin-right: 10px;
-            font-size: 28px;
+            margin-right: 12px;
+            font-size: 30px;
+            color: var(--secondary);
         }
         
         nav ul {
@@ -74,57 +81,63 @@
         
         nav ul li {
             margin-left: 25px;
+            position: relative;
         }
         
         nav ul li a {
             color: white;
             text-decoration: none;
             font-weight: 500;
-            transition: opacity 0.3s;
+            transition: var(--transition);
             display: flex;
             align-items: center;
+            padding: 8px 12px;
+            border-radius: 8px;
         }
         
-        nav ul li a:hover {
-            opacity: 0.9;
+        nav ul li a:hover, nav ul li a.active {
+            background: rgba(255, 255, 255, 0.1);
         }
         
         nav ul li a i {
             margin-right: 8px;
+            font-size: 18px;
         }
         
         .user-actions {
             display: flex;
             align-items: center;
+            gap: 12px;
         }
         
         .btn {
-            padding: 8px 16px;
-            border-radius: 50px;
+            padding: 10px 20px;
+            border-radius: 8px;
             font-weight: 500;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: var(--transition);
             border: none;
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            font-size: 14px;
         }
         
         .btn-primary {
-            background-color: white;
-            color: var(--primary);
+            background-color: var(--secondary);
+            color: white;
         }
         
         .btn-primary:hover {
-            background-color: #f0f0f0;
+            background-color: #0DA271;
             transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.3);
         }
         
         .btn-outline {
             background-color: transparent;
             border: 1px solid white;
             color: white;
-            margin-right: 10px;
         }
         
         .btn-outline:hover {
@@ -136,69 +149,270 @@
             padding: 30px 0;
         }
         
-        .welcome-banner {
-            background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
-            border-radius: 12px;
-            padding: 25px;
-            color: white;
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 25px;
             margin-bottom: 30px;
+        }
+        
+        .welcome-banner {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 16px;
+            padding: 30px;
+            color: white;
+            box-shadow: var(--card-shadow);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: var(--card-shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .welcome-banner::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
         }
         
         .welcome-text h2 {
-            font-size: 24px;
+            font-size: 26px;
             margin-bottom: 10px;
             font-weight: 600;
         }
         
-        .points-display {
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 50px;
-            padding: 10px 20px;
-            font-weight: 500;
+        .welcome-text p {
+            opacity: 0.9;
+            max-width: 600px;
+        }
+        
+        .stats-card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .stats-header {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-        }
-        
-        .points-display i {
-            margin-right: 8px;
-        }
-        
-        /* Filter Section */
-        .filters {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
             margin-bottom: 20px;
         }
         
-        .filter-group {
-            flex: 1;
-            min-width: 200px;
+        .stats-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
         }
         
-        .filter-group h3 {
-            font-size: 16px;
-            margin-bottom: 10px;
-            color: var(--dark);
-        }
-        
-        .filter-buttons {
+        .stats-content {
             display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .stat-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+        
+        .stat-info {
+            flex: 1;
+        }
+        
+        .stat-value {
+            font-weight: 600;
+            font-size: 18px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: var(--gray);
+        }
+        
+        /* Progress Section */
+        .progress-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .progress-card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .progress-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .progress-bar {
+            height: 12px;
+            background-color: #E2E8F0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, var(--primary-light), var(--primary));
+            border-radius: 10px;
+            transition: width 0.5s ease;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+        }
+        
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: var(--gray);
+        }
+        
+        /* Categories Section */
+        .categories-section {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .section-title i {
+            color: var(--primary);
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        
+        .category-card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            color: white;
+            font-size: 24px;
+        }
+        
+        .category-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .category-desc {
+            font-size: 14px;
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+        
+        .category-stats {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .category-stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .stat-number {
+            font-weight: 600;
+            font-size: 18px;
+            color: var(--primary);
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: var(--gray);
+        }
+        
+        /* Challenges Section */
+        .challenges-section {
+            margin-bottom: 30px;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .filters {
+            display: flex;
+            gap: 10px;
             flex-wrap: wrap;
-            gap: 8px;
         }
         
         .filter-btn {
             padding: 8px 16px;
             background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 50px;
+            border: 1px solid #E2E8F0;
+            border-radius: 8px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: var(--transition);
             font-size: 14px;
         }
         
@@ -208,65 +422,28 @@
             border-color: var(--primary);
         }
         
-        .search-box {
-            position: relative;
-            margin-top: 15px;
-        }
-        
-        .search-box input {
-            width: 100%;
-            padding: 10px 15px 10px 40px;
-            border: 1px solid #ddd;
-            border-radius: 50px;
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        .search-box i {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--gray);
-        }
-        
-        /* Challenges Section */
-        .challenges-section {
-            margin-top: 30px;
-        }
-        
-        .section-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 22px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: var(--dark);
-            display: flex;
-            align-items: center;
-        }
-        
-        .section-title i {
-            margin-right: 10px;
-            color: var(--primary);
-        }
-        
         .difficulty-tabs {
             display: flex;
-            border-bottom: 2px solid #eee;
+            background: #F1F5F9;
+            border-radius: 12px;
+            padding: 5px;
             margin-bottom: 20px;
-            flex-wrap: wrap;
         }
         
         .difficulty-tab {
             padding: 10px 20px;
             cursor: pointer;
             font-weight: 500;
-            border-bottom: 3px solid transparent;
-            transition: all 0.3s;
+            border-radius: 8px;
+            transition: var(--transition);
+            flex: 1;
+            text-align: center;
         }
         
         .difficulty-tab.active {
+            background: white;
             color: var(--primary);
-            border-bottom: 3px solid var(--primary);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         
         .challenges-grid {
@@ -277,18 +454,19 @@
         
         .challenge-card {
             background-color: white;
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
             box-shadow: var(--card-shadow);
-            transition: transform 0.3s;
+            transition: var(--transition);
         }
         
         .challenge-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
         
         .challenge-header {
-            padding: 15px;
+            padding: 20px;
             color: white;
             display: flex;
             justify-content: space-between;
@@ -298,24 +476,29 @@
         .challenge-difficulty {
             font-size: 12px;
             padding: 4px 10px;
-            border-radius: 50px;
+            border-radius: 20px;
             background-color: rgba(255, 255, 255, 0.3);
         }
         
         .challenge-content {
-            padding: 15px;
+            padding: 20px;
+            position: relative;
         }
         
         .challenge-title {
             font-weight: 600;
             margin-bottom: 10px;
             font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .challenge-description {
             color: var(--gray);
             font-size: 14px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            line-height: 1.5;
         }
         
         .challenge-meta {
@@ -329,39 +512,39 @@
             color: var(--primary);
             display: flex;
             align-items: center;
-        }
-        
-        .challenge-points i {
-            margin-right: 5px;
+            gap: 5px;
         }
         
         .challenge-action {
             background-color: var(--primary);
             color: white;
             border: none;
-            padding: 8px 15px;
-            border-radius: 50px;
+            padding: 10px 20px;
+            border-radius: 8px;
             cursor: pointer;
             font-size: 14px;
-            transition: background-color 0.3s;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .challenge-action:hover {
-            background-color: var(--primary-light);
+            background-color: var(--primary-dark);
         }
         
         /* Category Colors */
-        .category-fitness { background-color: #4CAF50; }
-        .category-nutrition { background-color: #FF9800; }
-        .category-mental { background-color: #9C27B0; }
-        .category-sleep { background-color: #2196F3; }
-        .category-lifestyle { background-color: #795548; }
+        .category-fitness { background-color: var(--secondary); }
+        .category-nutrition { background-color: #F59E0B; }
+        .category-mental { background-color: #8B5CF6; }
+        .category-sleep { background-color: #3B82F6; }
+        .category-lifestyle { background-color: #EC4899; }
         
         /* Difficulty Colors */
-        .difficulty-easy { background-color: #4CAF50; }
-        .difficulty-medium { background-color: #FF9800; }
-        .difficulty-hard { background-color: #F44336; }
-        .difficulty-expert { background-color: #9C27B0; }
+        .difficulty-easy { background-color: var(--secondary); }
+        .difficulty-medium { background-color: #F59E0B; }
+        .difficulty-hard { background-color: #EF4444; }
+        .difficulty-expert { background-color: #8B5CF6; }
         
         /* Modal Styles */
         .modal {
@@ -375,15 +558,17 @@
             z-index: 1000;
             justify-content: center;
             align-items: center;
+            backdrop-filter: blur(5px);
         }
         
         .modal-content {
             background-color: white;
-            border-radius: 12px;
+            border-radius: 16px;
             width: 90%;
             max-width: 500px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            position: relative;
         }
         
         .modal-header {
@@ -395,19 +580,8 @@
         
         .modal-title {
             font-family: 'Montserrat', sans-serif;
-            font-size: 20px;
+            font-size: 24px;
             font-weight: 600;
-            position: relative;
-        }
-        
-        .modal-title::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background-color: var(--primary);
         }
         
         .close-modal {
@@ -430,10 +604,17 @@
         
         .form-group input {
             width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
+            padding: 14px 16px;
+            border: 1px solid #E2E8F0;
             border-radius: 8px;
             font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
         }
         
         .form-actions {
@@ -443,121 +624,50 @@
             margin-top: 20px;
         }
         
-        /* Progress Bar */
-        .progress-container {
-            margin: 20px 0;
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: var(--card-shadow);
-        }
-        
-        .progress-label {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            font-weight: 500;
-        }
-        
-        .progress-bar {
-            height: 12px;
-            background-color: #e0e0e0;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(to right, var(--primary-light), var(--primary));
-            border-radius: 10px;
-            transition: width 0.5s ease;
-            box-shadow: 0 0 10px rgba(46, 125, 50, 0.3);
-        }
-        
-        /* Category Section */
-        .category-section {
-            margin: 40px 0;
-        }
-        
-        .category-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #eee;
-        }
-        
-        .category-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            color: white;
-            font-size: 20px;
-        }
-        
-        .category-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 24px;
-            font-weight: 600;
-        }
-        
-        .category-description {
-            color: var(--gray);
-            margin-top: 5px;
-            font-size: 14px;
-        }
-        
         /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            
+            .progress-section {
+                grid-template-columns: 1fr;
+            }
+        }
+        
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
                 text-align: center;
+                gap: 15px;
             }
             
             nav ul {
-                margin-top: 15px;
                 justify-content: center;
                 flex-wrap: wrap;
+                gap: 10px;
             }
             
             nav ul li {
-                margin: 5px 10px;
+                margin: 0;
             }
             
-            .user-actions {
-                margin-top: 15px;
-            }
-            
-            .welcome-banner {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .points-display {
-                margin-top: 15px;
-            }
-            
-            .difficulty-tabs {
-                overflow-x: auto;
-                white-space: nowrap;
+            .categories-grid {
+                grid-template-columns: 1fr;
             }
             
             .challenges-grid {
                 grid-template-columns: 1fr;
             }
             
-            .category-header {
+            .section-header {
                 flex-direction: column;
-                text-align: center;
+                align-items: flex-start;
+                gap: 15px;
             }
             
-            .category-icon {
-                margin-right: 0;
-                margin-bottom: 10px;
+            .filters {
+                flex-wrap: wrap;
             }
         }
         
@@ -570,6 +680,267 @@
         
         .pulse {
             animation: pulse 2s infinite;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        /* Badges */
+        .badges-section {
+            margin: 40px 0;
+        }
+        
+        .badges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 20px;
+        }
+        
+        .badge {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+        
+        .badge:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .badge-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .badge-title {
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .badge-desc {
+            font-size: 12px;
+            color: var(--gray);
+        }
+        
+        /* Streak */
+        .streak {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .streak-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .streak-info {
+            flex: 1;
+        }
+        
+        .streak-value {
+            font-weight: 600;
+            font-size: 18px;
+            color: var(--primary);
+        }
+        
+        .streak-label {
+            font-size: 14px;
+            color: var(--gray);
+        }
+        
+        /* User menu */
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .user-name {
+            font-weight: 500;
+        }
+        
+        .logout-btn {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+            text-decoration: underline;
+        }
+        
+        /* Section visibility */
+        .content-section {
+            display: none;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        /* Ranking styles */
+        .ranking-list {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .ranking-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #E2E8F0;
+        }
+        
+        .ranking-item:last-child {
+            border-bottom: none;
+        }
+        
+        .ranking-position {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            margin-right: 15px;
+        }
+        
+        .ranking-info {
+            flex: 1;
+        }
+        
+        .ranking-name {
+            font-weight: 600;
+        }
+        
+        .ranking-points {
+            color: var(--gray);
+            font-size: 14px;
+        }
+        
+        /* Community styles */
+        .community-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .community-card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+        }
+        
+        .community-icon {
+            font-size: 48px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .community-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .community-desc {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+        
+        /* Achievements styles */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .achievement-card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .achievement-badge {
+            font-size: 48px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .achievement-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .achievement-desc {
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .achievement-progress {
+            height: 8px;
+            background-color: #E2E8F0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        
+        .achievement-progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, var(--primary-light), var(--primary));
+            border-radius: 4px;
+        }
+        
+        .achievement-status {
+            font-size: 12px;
+            color: var(--gray);
         }
     </style>
 </head>
@@ -584,14 +955,20 @@
                 </div>
                 <nav>
                     <ul>
-                        <li><a href="#"><i class="fas fa-trophy"></i> Conquistas</a></li>
-                        <li><a href="#"><i class="fas fa-chart-line"></i> Ranking</a></li>
-                        <li><a href="#"><i class="fas fa-user"></i> Meu Perfil</a></li>
+                        <li><a href="#" class="nav-link active" data-section="dashboard"><i class="fas fa-home"></i> Início</a></li>
+                        <li><a href="#" class="nav-link" data-section="achievements"><i class="fas fa-trophy"></i> Conquistas</a></li>
+                        <li><a href="#" class="nav-link" data-section="ranking"><i class="fas fa-chart-line"></i> Ranking</a></li>
+                        <li><a href="#" class="nav-link" data-section="community"><i class="fas fa-users"></i> Comunidade</a></li>
                     </ul>
                 </nav>
-                <div class="user-actions">
+                <div class="user-actions" id="userActions">
                     <button class="btn btn-outline" id="loginBtn">Entrar</button>
                     <button class="btn btn-primary" id="registerBtn">Cadastrar</button>
+                </div>
+                <div class="user-menu" id="userMenu" style="display: none;">
+                    <div class="user-avatar" id="userAvatar"></div>
+                    <div class="user-name" id="userName"></div>
+                    <button class="logout-btn" id="logoutBtn">Sair</button>
                 </div>
             </div>
         </div>
@@ -599,194 +976,465 @@
 
     <!-- Main Content -->
     <div class="container main-content">
-        <!-- Welcome Banner -->
-        <div class="welcome-banner">
-            <div class="welcome-text">
-                <h2>Desafios de Hábitos Saudáveis</h2>
-                <p>Complete hábitos saudáveis para ganhar pontos e subir no ranking!</p>
-            </div>
-            <div class="points-display">
-                <i class="fas fa-coins"></i>
-                <span id="userPoints">0 pontos</span>
-            </div>
-        </div>
-
-        <!-- Progress Bar -->
-        <div class="progress-container">
-            <div class="progress-label">
-                <span>Seu progresso hoje</span>
-                <span id="progressPercentage">0%</span>
-            </div>
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
-            </div>
-        </div>
-
-        <!-- Filters -->
-        <div class="filters">
-            <div class="filter-group">
-                <h3>Categorias</h3>
-                <div class="filter-buttons">
-                    <button class="filter-btn active" data-category="all">Todas</button>
-                    <button class="filter-btn" data-category="fitness">Fitness</button>
-                    <button class="filter-btn" data-category="nutrition">Nutrição</button>
-                    <button class="filter-btn" data-category="mental">Mental</button>
-                    <button class="filter-btn" data-category="sleep">Sono</button>
-                    <button class="filter-btn" data-category="lifestyle">Estilo de Vida</button>
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="content-section active">
+            <!-- Dashboard -->
+            <div class="dashboard">
+                <div class="welcome-banner fade-in">
+                    <div class="welcome-text">
+                        <h2 id="welcomeTitle">Bem-vindo ao HealthBoost!</h2>
+                        <p>Transforme seus hábitos, ganhe pontos e melhore sua saúde com desafios diários personalizados.</p>
+                    </div>
+                    <div class="points-display">
+                        <i class="fas fa-coins"></i>
+                        <span id="userPoints">0 pontos</span>
+                    </div>
                 </div>
-            </div>
-            <div class="filter-group">
-                <div class="search-box">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="searchInput" placeholder="Buscar hábitos...">
-                </div>
-            </div>
-        </div>
-
-        <!-- Special Challenge -->
-        <div class="special-challenge">
-            <div class="section-title">
-                <i class="fas fa-star"></i>
-                Desafio Diário Especial
-            </div>
-            <div class="challenge-card">
-                <div class="challenge-header category-fitness">
-                    <span>Fitness</span>
-                    <span class="challenge-difficulty">Bônus</span>
-                </div>
-                <div class="challenge-content">
-                    <h3 class="challenge-title">30 minutos de cardio</h3>
-                    <p class="challenge-description">Complete 30 minutos de exercício cardiovascular e ganhe 50 pontos extras!</p>
-                    <div class="challenge-meta">
-                        <div class="challenge-points">
-                            <i class="fas fa-coins"></i>
-                            50 pontos
+                
+                <div class="stats-card fade-in">
+                    <div class="stats-header">
+                        <h3 class="stats-title">Estatísticas</h3>
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="stats-content">
+                        <div class="stat-item">
+                            <div class="stat-icon" style="background-color: var(--primary);">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            <div class="stat-info">
+                                <div class="stat-value" id="streakCount">0 dias</div>
+                                <div class="stat-label">Sequência atual</div>
+                            </div>
                         </div>
-                        <button class="challenge-action pulse" data-id="special">Iniciar</button>
+                        <div class="stat-item">
+                            <div class="stat-icon" style="background-color: var(--secondary);">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="stat-info">
+                                <div class="stat-value" id="completedCount">0</div>
+                                <div class="stat-label">Desafios completos</div>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon" style="background-color: #8B5CF6;">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <div class="stat-info">
+                                <div class="stat-value" id="badgeCount">0</div>
+                                <div class="stat-label">Conquistas</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Fitness Category -->
-        <div class="category-section" id="fitness">
-            <div class="category-header">
-                <div class="category-icon" style="background-color: #4CAF50;">
-                    <i class="fas fa-running"></i>
+            <!-- Progress Section -->
+            <div class="progress-section">
+                <div class="progress-card fade-in">
+                    <div class="progress-header">
+                        <h3 class="progress-title">Progresso Diário</h3>
+                        <i class="fas fa-calendar-day"></i>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="dailyProgress" style="width: 0%"></div>
+                    </div>
+                    <div class="progress-info">
+                        <span>0% completo</span>
+                        <span>Meta: 100%</span>
+                    </div>
                 </div>
-                <div>
-                    <h2 class="category-title">Fitness & Exercícios</h2>
-                    <p class="category-description">Atividades físicas para melhorar sua saúde e condicionamento</p>
+                
+                <div class="progress-card fade-in">
+                    <div class="progress-header">
+                        <h3 class="progress-title">Progresso Semanal</h3>
+                        <i class="fas fa-calendar-week"></i>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="weeklyProgress" style="width: 0%"></div>
+                    </div>
+                    <div class="progress-info">
+                        <span>0% completo</span>
+                        <span>Meta: 100%</span>
+                    </div>
                 </div>
             </div>
-            
-            <div class="difficulty-tabs">
-                <div class="difficulty-tab active" data-difficulty="easy">Fácil (10 pontos cada)</div>
-                <div class="difficulty-tab" data-difficulty="medium">Médio (20 pontos cada)</div>
-                <div class="difficulty-tab" data-difficulty="hard">Difícil (30 pontos cada)</div>
-                <div class="difficulty-tab" data-difficulty="expert">Especialista (50 pontos cada)</div>
-            </div>
-            
-            <div class="challenges-grid" id="fitnessChallenges">
-                <!-- Fitness challenges will be loaded here by JavaScript -->
-            </div>
-        </div>
 
-        <!-- Nutrition Category -->
-        <div class="category-section" id="nutrition">
-            <div class="category-header">
-                <div class="category-icon" style="background-color: #FF9800;">
-                    <i class="fas fa-apple-alt"></i>
+            <!-- Categories Section -->
+            <div class="categories-section">
+                <h2 class="section-title"><i class="fas fa-layer-group"></i> Categorias</h2>
+                <div class="categories-grid">
+                    <div class="category-card fade-in" data-category="fitness">
+                        <div class="category-icon category-fitness">
+                            <i class="fas fa-running"></i>
+                        </div>
+                        <h3 class="category-title">Fitness</h3>
+                        <p class="category-desc">Exercícios e atividades físicas</p>
+                        <div class="category-stats">
+                            <div class="category-stat">
+                                <span class="stat-number" id="fitnessCompleted">0</span>
+                                <span class="stat-label">Completos</span>
+                            </div>
+                            <div class="category-stat">
+                                <span class="stat-number">10</span>
+                                <span class="stat-label">Desafios</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="category-card fade-in" data-category="nutrition">
+                        <div class="category-icon category-nutrition">
+                            <i class="fas fa-apple-alt"></i>
+                        </div>
+                        <h3 class="category-title">Nutrição</h3>
+                        <p class="category-desc">Alimentação saudável</p>
+                        <div class="category-stats">
+                            <div class="category-stat">
+                                <span class="stat-number" id="nutritionCompleted">0</span>
+                                <span class="stat-label">Completos</span>
+                            </div>
+                            <div class="category-stat">
+                                <span class="stat-number">10</span>
+                                <span class="stat-label">Desafios</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="category-card fade-in" data-category="mental">
+                        <div class="category-icon category-mental">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 class="category-title">Saúde Mental</h3>
+                        <p class="category-desc">Bem-estar emocional</p>
+                        <div class="category-stats">
+                            <div class="category-stat">
+                                <span class="stat-number" id="mentalCompleted">0</span>
+                                <span class="stat-label">Completos</span>
+                            </div>
+                            <div class="category-stat">
+                                <span class="stat-number">10</span>
+                                <span class="stat-label">Desafios</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="category-card fade-in" data-category="sleep">
+                        <div class="category-icon category-sleep">
+                            <i class="fas fa-bed"></i>
+                        </div>
+                        <h3 class="category-title">Sono</h3>
+                        <p class="category-desc">Qualidade do descanso</p>
+                        <div class="category-stats">
+                            <div class="category-stat">
+                                <span class="stat-number" id="sleepCompleted">0</span>
+                                <span class="stat-label">Completos</span>
+                            </div>
+                            <div class="category-stat">
+                                <span class="stat-number">10</span>
+                                <span class="stat-label">Desafios</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="category-card fade-in" data-category="lifestyle">
+                        <div class="category-icon category-lifestyle">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3 class="category-title">Estilo de Vida</h3>
+                        <p class="category-desc">Hábitos saudáveis</p>
+                        <div class="category-stats">
+                            <div class="category-stat">
+                                <span class="stat-number" id="lifestyleCompleted">0</span>
+                                <span class="stat-label">Completos</span>
+                            </div>
+                            <div class="category-stat">
+                                <span class="stat-number">10</span>
+                                <span class="stat-label">Desafios</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <h2 class="category-title">Nutrição & Alimentação</h2>
-                    <p class="category-description">Hábitos alimentares saudáveis para uma vida melhor</p>
-                </div>
             </div>
-            
-            <div class="difficulty-tabs">
-                <div class="difficulty-tab active" data-difficulty="easy">Fácil (10 pontos cada)</div>
-                <div class="difficulty-tab" data-difficulty="medium">Médio (20 pontos cada)</div>
-                <div class="difficulty-tab" data-difficulty="hard">Difícil (30 pontos cada)</div>
-                <div class="difficulty-tab" data-difficulty="expert">Especialista (50 pontos cada)</div>
-            </div>
-            
-            <div class="challenges-grid" id="nutritionChallenges">
-                <!-- Nutrition challenges will be loaded here by JavaScript -->
-            </div>
-        </div>
 
-        <!-- Mental Health Category -->
-        <div class="category-section" id="mental">
-            <div class="category-header">
-                <div class="category-icon" style="background-color: #9C27B0;">
-                    <i class="fas fa-brain"></i>
+            <!-- Challenges Section -->
+            <div class="challenges-section">
+                <div class="section-header">
+                    <h2 class="section-title"><i class="fas fa-tasks"></i> Desafios</h2>
+                    <div class="filters">
+                        <button class="filter-btn active" data-category="all">Todos</button>
+                        <button class="filter-btn" data-category="fitness">Fitness</button>
+                        <button class="filter-btn" data-category="nutrition">Nutrição</button>
+                        <button class="filter-btn" data-category="mental">Mental</button>
+                        <button class="filter-btn" data-category="sleep">Sono</button>
+                        <button class="filter-btn" data-category="lifestyle">Estilo de Vida</button>
+                    </div>
                 </div>
-                <div>
-                    <h2 class="category-title">Saúde Mental</h2>
-                    <p class="category-description">Práticas para cuidar da mente e reduzir o estresse</p>
+                
+                <div class="difficulty-tabs">
+                    <div class="difficulty-tab active" data-difficulty="easy">Fácil</div>
+                    <div class="difficulty-tab" data-difficulty="medium">Médio</div>
+                    <div class="difficulty-tab" data-difficulty="hard">Difícil</div>
+                    <div class="difficulty-tab" data-difficulty="expert">Especialista</div>
+                </div>
+                
+                <div class="challenges-grid" id="challengesContainer">
+                    <!-- Challenges will be loaded here by JavaScript -->
                 </div>
             </div>
-            
-            <div class="difficulty-tabs">
-                <div class="difficulty-tab active" data-difficulty="easy">Fácil (10 pontos cada)</div>
-                <div class="difficulty-tab" data-difficulty="medium">Médio (20 pontos cada)</div>
-                <div class="difficulty-tab" data-difficulty="hard">Difícil (30 pontos cada)</div>
-                <div class="difficulty-tab" data-difficulty="expert">Especialista (50 pontos cada)</div>
-            </div>
-            
-            <div class="challenges-grid" id="mentalChallenges">
-                <!-- Mental challenges will be loaded here by JavaScript -->
-            </div>
-        </div>
 
-        <!-- Sleep Category -->
-        <div class="category-section" id="sleep">
-            <div class="category-header">
-                <div class="category-icon" style="background-color: #2196F3;">
-                    <i class="fas fa-bed"></i>
+            <!-- Badges Section -->
+            <div class="badges-section">
+                <h2 class="section-title"><i class="fas fa-trophy"></i> Conquistas</h2>
+                <div class="badges-grid">
+                    <div class="badge fade-in">
+                        <div class="badge-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="badge-title">Iniciante</div>
+                        <div class="badge-desc">Complete 5 desafios</div>
+                    </div>
+                    
+                    <div class="badge fade-in">
+                        <div class="badge-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <div class="badge-title">Nutrição</div>
+                        <div class="badge-desc">Complete 3 desafios de nutrição</div>
+                    </div>
+                    
+                    <div class="badge fade-in">
+                        <div class="badge-icon">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <div class="badge-title">Fitness</div>
+                        <div class="badge-desc">Complete 3 desafios de fitness</div>
+                    </div>
+                    
+                    <div class="badge fade-in">
+                        <div class="badge-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="badge-title">Mental</div>
+                        <div class="badge-desc">Complete 3 desafios mentais</div>
+                    </div>
+                    
+                    <div class="badge fade-in">
+                        <div class="badge-icon">
+                            <i class="fas fa-moon"></i>
+                        </div>
+                        <div class="badge-title">Sono</div>
+                        <div class="badge-desc">Complete 3 desafios de sono</div>
+                    </div>
+                    
+                    <div class="badge fade-in">
+                        <div class="badge-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="badge-title">Estilo de Vida</div>
+                        <div class="badge-desc">Complete 3 desafios de estilo de vida</div>
+                    </div>
                 </div>
-                <div>
-                    <h2 class="category-title">Sono & Descanso</h2>
-                    <p class="category-description">Hábitos para melhorar a qualidade do seu sono</p>
-                </div>
             </div>
-            
-            <div class="difficulty-tabs">
-                <div class="difficulty-tab active" data-difficulty="easy">Fácil (10 pontos cada)</div>
-                <div class="difficulty-tab" data-difficulty="medium">Médio (20 pontos cada)</div>
-                <div class="difficulty-tab" data-difficulty="hard">Difícil (30 pontos cada)</div>
-                <div class="difficulty-tab" data-difficulty="expert">Especialista (50 pontos cada)</div>
-            </div>
-            
-            <div class="challenges-grid" id="sleepChallenges">
-                <!-- Sleep challenges will be loaded here by JavaScript -->
-            </div>
-        </div>
+        </section>
 
-        <!-- Lifestyle Category -->
-        <div class="category-section" id="lifestyle">
-            <div class="category-header">
-                <div class="category-icon" style="background-color: #795548;">
-                    <i class="fas fa-heart"></i>
-                </div>
-                <div>
-                    <h2 class="category-title">Estilo de Vida</h2>
-                    <p class="category-description">Hábitos para um estilo de vida mais saudável e equilibrado</p>
-                </div>
-            </div>
+        <!-- Achievements Section -->
+        <section id="achievements" class="content-section">
+            <h2 class="section-title"><i class="fas fa-trophy"></i> Minhas Conquistas</h2>
             
-            <div class="difficulty-tabs">
-                <div class="difficulty-tab active" data-difficulty="easy">Fácil (10 pontos cada)</div>
-                <div class="difficulty-tab" data-difficulty="medium">Médio (20 pontos cada)</div>
-                <div class="difficulty-tab" data-difficulty="hard">Difícil (30 pontos cada)</div>
-                <div class="difficulty-tab" data-difficulty="expert">Especialista (50 pontos cada)</div>
+            <div class="achievements-grid">
+                <div class="achievement-card fade-in">
+                    <div class="achievement-badge">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3 class="achievement-title">Iniciante</h3>
+                    <p class="achievement-desc">Complete 5 desafios para desbloquear esta conquista</p>
+                    <div class="achievement-progress">
+                        <div class="achievement-progress-fill" style="width: 20%"></div>
+                    </div>
+                    <div class="achievement-status">1 de 5 completos</div>
+                </div>
+                
+                <div class="achievement-card fade-in">
+                    <div class="achievement-badge">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3 class="achievement-title">Mestre da Nutrição</h3>
+                    <p class="achievement-desc">Complete 10 desafios de nutrição</p>
+                    <div class="achievement-progress">
+                        <div class="achievement-progress-fill" style="width: 0%"></div>
+                    </div>
+                    <div class="achievement-status">0 de 10 completos</div>
+                </div>
+                
+                <div class="achievement-card fade-in">
+                    <div class="achievement-badge">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3 class="achievement-title">Atleta</h3>
+                    <p class="achievement-desc">Complete 10 desafios de fitness</p>
+                    <div class="achievement-progress">
+                        <div class="achievement-progress-fill" style="width: 10%"></div>
+                    </div>
+                    <div class="achievement-status">1 de 10 completos</div>
+                </div>
+                
+                <div class="achievement-card fade-in">
+                    <div class="achievement-badge">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="achievement-title">Mente Sã</h3>
+                    <p class="achievement-desc">Complete 10 desafios de saúde mental</p>
+                    <div class="achievement-progress">
+                        <div class="achievement-progress-fill" style="width: 0%"></div>
+                    </div>
+                    <div class="achievement-status">0 de 10 completos</div>
+                </div>
+                
+                <div class="achievement-card fade-in">
+                    <div class="achievement-badge">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <h3 class="achievement-title">Mestre do Sono</h3>
+                    <p class="achievement-desc">Complete 10 desafios de sono</p>
+                    <div class="achievement-progress">
+                        <div class="achievement-progress-fill" style="width: 0%"></div>
+                    </div>
+                    <div class="achievement-status">0 de 10 completos</div>
+                </div>
+                
+                <div class="achievement-card fade-in">
+                    <div class="achievement-badge">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="achievement-title">Estilo de Vida Saudável</h3>
+                    <p class="achievement-desc">Complete 10 desafios de estilo de vida</p>
+                    <div class="achievement-progress">
+                        <div class="achievement-progress-fill" style="width: 0%"></div>
+                    </div>
+                    <div class="achievement-status">0 de 10 completos</div>
+                </div>
             </div>
+        </section>
+
+        <!-- Ranking Section -->
+        <section id="ranking" class="content-section">
+            <h2 class="section-title"><i class="fas fa-chart-line"></i> Ranking de Usuários</h2>
             
-            <div class="challenges-grid" id="lifestyleChallenges">
-                <!-- Lifestyle challenges will be loaded here by JavaScript -->
+            <div class="ranking-list">
+                <div class="ranking-item">
+                    <div class="ranking-position">1</div>
+                    <div class="ranking-info">
+                        <div class="ranking-name">Ana Silva</div>
+                        <div class="ranking-points">1,250 pontos</div>
+                    </div>
+                </div>
+                
+                <div class="ranking-item">
+                    <div class="ranking-position">2</div>
+                    <div class="ranking-info">
+                        <div class="ranking-name">Carlos Oliveira</div>
+                        <div class="ranking-points">980 pontos</div>
+                    </div>
+                </div>
+                
+                <div class="ranking-item">
+                    <div class="ranking-position">3</div>
+                    <div class="ranking-info">
+                        <div class="ranking-name">Mariana Santos</div>
+                        <div class="ranking-points">875 pontos</div>
+                    </div>
+                </div>
+                
+                <div class="ranking-item">
+                    <div class="ranking-position">4</div>
+                    <div class="ranking-info">
+                        <div class="ranking-name">João Pereira</div>
+                        <div class="ranking-points">760 pontos</div>
+                    </div>
+                </div>
+                
+                <div class="ranking-item">
+                    <div class="ranking-position">5</div>
+                    <div class="ranking-info">
+                        <div class="ranking-name">Fernanda Lima</div>
+                        <div class="ranking-points">650 pontos</div>
+                    </div>
+                </div>
+                
+                <div class="ranking-item">
+                    <div class="ranking-position">6</div>
+                    <div class="ranking-info">
+                        <div class="ranking-name">Ricardo Alves</div>
+                        <div class="ranking-points">540 pontos</div>
+                    </div>
+                </div>
+                
+                <div class="ranking-item">
+                    <div class="ranking-position">7</div>
+                    <div class="ranking-info">
+                        <div class="ranking-name">Juliana Costa</div>
+                        <div class="ranking-points">430 pontos</div>
+                    </div>
+                </div>
+                
+                <div class="ranking-item">
+                    <div class="ranking-position">8</div>
+                    <div class="ranking-info">
+                        <div class="ranking-name">Pedro Martins</div>
+                        <div class="ranking-points">320 pontos</div>
+                    </div>
+                </div>
+                
+                <div class="ranking-item">
+                    <div class="ranking-position">9</div>
+                    <div class="ranking-info">
+                        <div class="ranking-name">Amanda Rodrigues</div>
+                        <div class="ranking-points">210 pontos</div>
+                    </div>
+                </div>
+                
+                <div class="ranking-item">
+                    <div class="ranking-position">10</div>
+                    <div class="ranking-info">
+                        <div class="ranking-name">Bruno Souza</div>
+                        <div class="ranking-points">150 pontos</div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <!-- Community Section -->
+        <section id="community" class="content-section">
+            <h2 class="section-title"><i class="fas fa-users"></i> Comunidade</h2>
+            
+            <div class="community-grid">
+                <div class="community-card fade-in">
+                    <div class="community-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="community-title">Fórum de Discussão</h3>
+                    <p class="community-desc">Participe de discussões sobre hábitos saudáveis e troque experiências com outros membros.</p>
+                    <button class="btn btn-primary">Participar</button>
+                </div>
+                
+                <div class="community-card fade-in">
+                    <div class="community-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3 class="community-title">Desafios em Grupo</h3>
+                    <p class="community-desc">Junte-se a grupos para realizar desafios coletivos e aumentar sua motivação.</p>
+                    <button class="btn btn-primary">Explorar</button>
+                </div>
+                
+                <div class="community-card fade-in">
+                    <div class="community-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3 class="community-title">Competições</h3>
+                    <p class="community-desc">Participe de competições saudáveis para ver quem consegue mais pontos em determinados desafios.</p>
+                    <button class="btn btn-primary">Competir</button>
+                </div>
+            </div>
+        </section>
     </div>
 
     <!-- Login Modal -->
@@ -805,7 +1453,7 @@
                 <input type="password" id="loginPassword" placeholder="Sua senha">
             </div>
             <div class="form-actions">
-                <button class="btn btn-outline" style="color: var(--dark); border-color: var(--gray);">Cancelar</button>
+                <button class="btn btn-outline" style="color: var(--dark); border-color: var(--gray);" id="cancelLogin">Cancelar</button>
                 <button class="btn btn-primary" id="confirmLogin">Entrar</button>
             </div>
         </div>
@@ -835,276 +1483,67 @@
                 <input type="password" id="registerConfirmPassword" placeholder="Confirme sua senha">
             </div>
             <div class="form-actions">
-                <button class="btn btn-outline" style="color: var(--dark); border-color: var(--gray);">Cancelar</button>
+                <button class="btn btn-outline" style="color: var(--dark); border-color: var(--gray);" id="cancelRegister">Cancelar</button>
                 <button class="btn btn-primary" id="confirmRegister">Criar conta</button>
             </div>
         </div>
     </div>
 
     <script>
-        // Expanded challenges data with more activities in each category
+        // Sample challenges data
         const challenges = {
-            fitness: {
-                easy: [
-                    { id: 101, title: "Caminhada de 15 minutos", description: "Dê uma caminhada de 15 minutos ao ar livre.", points: 10 },
-                    { id: 102, title: "Alongamento matinal", description: "Faça 5 minutos de alongamento ao acordar.", points: 10 },
-                    { id: 103, title: "Subir escadas", description: "Prefira escadas ao elevador por um dia.", points: 10 },
-                    { id: 104, title: "Yoga básico", description: "Pratique 10 minutos de yoga para iniciantes.", points: 10 },
-                    { id: 105, title: "Pausa ativa", description: "Faça uma pausa de 5 minutos para se alongar a cada hora sentado.", points: 10 },
-                    { id: 106, title: "Dança livre", description: "Dance por 10 minutos suas músicas favoritas.", points: 10 },
-                    { id: 107, title: "Respiração profunda", description: "Pratique 5 minutos de exercícios de respiração.", points: 10 },
-                    { id: 108, title: "Exercícios de postura", description: "Mantenha uma postura correta por 1 hora.", points: 10 },
-                    { id: 109, title: "Caminhada na natureza", description: "Caminhe por 20 minutos em um parque ou área verde.", points: 10 },
-                    { id: 110, title: "Alongamento noturno", description: "Alongue-se por 5 minutos antes de dormir.", points: 10 }
-                ],
-                medium: [
-                    { id: 111, title: "Corrida de 30 minutos", description: "Complete uma corrida de 30 minutos.", points: 20 },
-                    { id: 112, title: "Treino de força", description: "Faça um treino de força com peso corporal ou pesos.", points: 20 },
-                    { id: 113, title: "Aula de dança", description: "Participe de uma aula de dança de 45 minutos.", points: 20 },
-                    { id: 114, title: "Natação", description: "Nade por 30 minutos.", points: 20 },
-                    { id: 115, title: "Ciclismo", description: "Pedale por 40 minutos.", points: 20 },
-                    { id: 116, title: "Treino funcional", description: "Complete um treino funcional de 30 minutos.", points: 20 },
-                    { id: 117, title: "Yoga intermediário", description: "Pratique 30 minutos de yoga.", points: 20 },
-                    { id: 118, title: "Treino em circuito", description: "Faça um treino em circuito de 25 minutos.", points: 20 },
-                    { id: 119, title: "Caminhada acelerada", description: "Caminhe em ritmo acelerado por 45 minutos.", points: 20 },
-                    { id: 120, title: "Exercícios com elástico", description: "Complete um treino de 30 minutos com elástico de resistência.", points: 20 }
-                ],
-                hard: [
-                    { id: 121, title: "Treino HIIT 45min", description: "Complete um treino intervalado de alta intensidade.", points: 30 },
-                    { id: 122, title: "Yoga avançado", description: "Pratique uma sessão de yoga de 60 minutos.", points: 30 },
-                    { id: 123, title: "Corrida de 10km", description: "Complete uma corrida de 10km.", points: 30 },
-                    { id: 124, title: "Treino de crossfit", description: "Complete um treino de crossfit de 50 minutos.", points: 30 },
-                    { id: 125, title: "Natação intensiva", description: "Nade por 1 hora em ritmo acelerado.", points: 30 },
-                    { id: 126, title: "Treino de resistência", description: "Complete um treino de resistência de 60 minutos.", points: 30 },
-                    { id: 127, title: "Ciclismo de montanha", description: "Faça trilha de mountain bike por 1h30.", points: 30 },
-                    { id: 128, title: "Treino militar", description: "Complete um treino estilo militar de 45 minutos.", points: 30 },
-                    { id: 129, title: "Aula de artes marciais", description: "Participe de uma aula de artes marciais de 60 minutos.", points: 30 },
-                    { id: 130, title: "Treino de flexibilidade", description: "Complete uma sessão intensiva de alongamento de 40 minutos.", points: 30 }
-                ],
-                expert: [
-                    { id: 131, title: "Maratona de exercícios", description: "Complete 2 horas de atividade física variada.", points: 50 },
-                    { id: 132, title: "Treino de endurance", description: "Complete uma sessão de exercícios de longa duração (90+ min).", points: 50 },
-                    { id: 133, title: "Competição esportiva", description: "Participe de uma competição esportiva local.", points: 50 },
-                    { id: 134, title: "Treino biológico", description: "Acorde antes do amanhecer e faça exercícios ao ar livre.", points: 50 },
-                    { id: 135, title: "Desafio de obstáculos", description: "Complete um percurso de obstáculos de 5km.", points: 50 },
-                    { id: 136, title: "Treino em dupla", description: "Complete um treino desafiador com um parceiro.", points: 50 },
-                    { id: 137, title: "Imitação de atleta", description: "Repita a rotina de treino de um atleta profissional por um dia.", points: 50 },
-                    { id: 138, title: "Treino em altitude", description: "Complete um treino em local de alta altitude.", points: 50 },
-                    { id: 139, title: "Maratona de dança", description: "Participe de uma maratona de dança de 2 horas.", points: 50 },
-                    { id: 140, title: "Treino com personal", description: "Contrate um personal trainer para uma sessão intensiva.", points: 50 }
-                ]
-            },
-            nutrition: {
-                easy: [
-                    { id: 201, title: "Beber 2L de água", description: "Beba pelo menos 2 litros de água durante o dia.", points: 10 },
-                    { id: 202, title: "Comer uma fruta", description: "Consuma pelo menos uma fruta fresca.", points: 10 },
-                    { id: 203, title: "Adicionar vegetais", description: "Inclua vegetais em pelo menos duas refeições.", points: 10 },
-                    { id: 204, title: "Preparar lanche saudável", description: "Prepare um lanche saudável em vez de comprar processados.", points: 10 },
-                    { id: 205, title: "Reduzir açúcar", description: "Elimine o açúcar refinado de uma refeição.", points: 10 },
-                    { id: 206, title: "Comer devagar", description: "Faça uma refeição com atenção, mastigando devagar.", points: 10 },
-                    { id: 207, title: "Chá sem açúcar", description: "Substitua refrigerantes por chá sem açúcar.", points: 10 },
-                    { id: 208, title: "Proteína magra", description: "Inclua uma fonte de proteína magra em uma refeição.", points: 10 },
-                    { id: 209, title: "Grãos integrais", description: "Substitua um carboidrato refinado por integral.", points: 10 },
-                    { id: 210, title: "Planejar refeição", description: "Planeje uma refeição saudável com antecedência.", points: 10 }
-                ],
-                medium: [
-                    { id: 211, title: "Refeição balanceada", description: "Prepare uma refeição com proteínas, carboidratos e vegetais.", points: 20 },
-                    { id: 212, title: "Plano alimentar semanal", description: "Planeje todas as refeições da semana.", points: 20 },
-                    { id: 213, title: "Dia sem processados", description: "Passe um dia sem consumir alimentos ultraprocessados.", points: 20 },
-                    { id: 214, title: "Experimentar novo vegetal", description: "Experimente um vegetal que nunca comeu antes.", points: 20 },
-                    { id: 215, title: "Cozinhar em casa", description: "Prepare todas as refeições em casa por um dia.", points: 20 },
-                    { id: 216, title: "Dieta colorida", description: "Consuma alimentos de 5 cores diferentes em um dia.", points: 20 },
-                    { id: 217, title: "Reduzir sal", description: "Use metade da quantidade habitual de sal nas refeições.", points: 20 },
-                    { id: 218, title: "Smoothie nutritivo", description: "Prepare um smoothie com pelo menos 3 ingredientes nutritivos.", points: 20 },
-                    { id: 219, title: "Jejum intermitente 12h", description: "Faça um jejum de 12 horas entre o jantar e o café da manhã.", points: 20 },
-                    { id: 220, title: "Registro alimentar", description: "Mantenha um registro detalhado de tudo que come por um dia.", points: 20 }
-                ],
-                hard: [
-                    { id: 221, title: "Dia sem açúcar", description: "Passe um dia completo sem consumir açúcar refinado.", points: 30 },
-                    { id: 222, title: "Preparar marmitas saudáveis", description: "Prepare marmitas equilibradas para a semana.", points: 30 },
-                    { id: 223, title: "Desafio vegetariano", description: "Faça todas as refeições do dia sem carne.", points: 30 },
-                    { id: 224, title: "Consciência alimentar", description: "Pesquise a origem e valor nutricional de tudo que consumir.", points: 30 },
-                    { id: 225, title: "Reduzir lactose", description: "Passe um dia sem consumir laticínios.", points: 30 },
-                    { id: 226, title: "Cozinhar novo prato saudável", description: "Prepare um prato saudável que nunca fez antes.", points: 30 },
-                    { id: 227, title: "Alimentação consciente", description: "Coma sem distrações (TV, celular) por um dia.", points: 30 },
-                    { id: 228, title: "Dieta anti-inflamatória", description: "Siga uma dieta anti-inflamatória por um dia.", points: 30 },
-                    { id: 229, title: "Reduzir cafeína", description: "Substitua café por chás de ervas por um dia.", points: 30 },
-                    { id: 230, title: "Plano macro nutricional", description: "Calcule e siga suas macros por um dia.", points: 30 }
-                ],
-                expert: [
-                    { id: 231, title: "Jejum intermitente 16/8", description: "Mantenha um jejum de 16 horas seguido de 8 horas de alimentação.", points: 50 },
-                    { id: 232, title: "Dieta plant-based por 7 dias", description: "Mantenha uma dieta baseada em plantas por uma semana.", points: 50 },
-                    { id: 233, title: "Desafio sem glúten", description: "Elimine completamente o glúten por 3 dias.", points: 50 },
-                    { id: 234, title: "Alimentação intuitiva", description: "Pratique alimentação intuitiva por uma semana.", points: 50 },
-                    { id: 235, title: "Desintoxicação digital alimentar", description: "Desconecte-se de redes sociais relacionadas a comida por 3 dias.", points: 50 },
-                    { id: 236, title: "Culinária terapêutica", description: "Passe um dia cozinhando apenas com ingredientes frescos e integrais.", points: 50 },
-                    { id: 237, title: "Agricultura sustentável", description: "Compre apenas de produtores locais por uma semana.", points: 50 },
-                    { id: 238, title: "Educação nutricional", description: "Estude e aplique um novo conceito nutricional por 3 dias.", points: 50 },
-                    { id: 239, title: "Mindful eating", description: "Pratique eating mindfulness em todas as refeições por 3 dias.", points: 50 },
-                    { id: 240, title: "Plano alimentar personalizado", description: "Crie e siga um plano alimentar personalizado por 5 dias.", points: 50 }
-                ]
-            },
-            mental: {
-                easy: [
-                    { id: 301, title: "5 minutos de meditação", description: "Medite por 5 minutos para acalmar a mente.", points: 10 },
-                    { id: 302, title: "Respiração profunda", description: "Pratique 3 minutos de exercícios de respiração.", points: 10 },
-                    { id: 303, title: "Lista de gratidão", description: "Anote 3 coisas pelas quais você é grato hoje.", points: 10 },
-                    { id: 304, title: "Pausa mental", description: "Faça uma pausa de 5 minutos para relaxar a mente.", points: 10 },
-                    { id: 305, title: "Visualização positiva", description: "Pratique 5 minutos de visualização positiva.", points: 10 },
-                    { id: 306, title: "Desconexão digital", description: "Fique 30 minutos sem checar o celular.", points: 10 },
-                    { id: 307, title: "Leitura relaxante", description: "Leia algo inspirador por 10 minutos.", points: 10 },
-                    { id: 308, title: "Audiolivro inspirador", description: "Ouça 15 minutos de um audiolivro inspirador.", points: 10 },
-                    { id: 309, title: "Autoafirmações", description: "Repita autoafirmações positivas por 5 minutos.", points: 10 },
-                    { id: 310, title: "Observação consciente", description: "Observe algo na natureza por 5 minutos com atenção plena.", points: 10 }
-                ],
-                medium: [
-                    { id: 311, title: "Leitura por 30 minutos", description: "Leia um livro por pelo menos 30 minutos.", points: 20 },
-                    { id: 312, title: "Diário de gratidão", description: "Anote 3 coisas pelas quais você é grato hoje.", points: 20 },
-                    { id: 313, title: "Meditação guiada", description: "Complete uma sessão de meditação guiada de 20 minutos.", points: 20 },
-                    { id: 314, title: "Aula ou curso online", description: "Dedique 1 hora para aprender algo novo online.", points: 20 },
-                    { id: 315, title: "Terapia artística", description: "Expresse-se através de arte por 30 minutos.", points: 20 },
-                    { id: 316, title: "Jornaling terapêutico", description: "Escreva em um diário por 20 minutos sobre seus pensamentos.", points: 20 },
-                    { id: 317, title: "Exercício de perdão", description: "Pratique um exercício de perdão por 15 minutos.", points: 20 },
-                    { id: 318, title: "Mindfulness walking", description: "Faça uma caminhada de 25 minutos com atenção plena.", points: 20 },
-                    { id: 319, title: "Desafio de positividade", description: "Mantenha pensamentos positivos por 2 horas consecutivas.", points: 20 },
-                    { id: 320, title: "Técnica de grounding", description: "Pratique técnicas de grounding por 15 minutos.", points: 20 }
-                ],
-                hard: [
-                    { id: 321, title: "Sessão de terapia", description: "Participe de uma sessão de terapia ou aconselhamento.", points: 30 },
-                    { id: 322, title: "Retiro de silêncio", description: "Fique em silêncio por 4 horas consecutivas.", points: 30 },
-                    { id: 323, title: "Meditação prolongada", description: "Medite por 30 minutos consecutivos.", points: 30 },
-                    { id: 324, title: "Digital detox", description: "Fique 24 horas sem redes sociais.", points: 30 },
-                    { id: 325, title: "Autoconhecimento", description: "Reserve 1 hora para reflexão e autoconhecimento.", points: 30 },
-                    { id: 326, title: "Workshop de desenvolvimento", description: "Participe de um workshop de desenvolvimento pessoal.", points: 30 },
-                    { id: 327, title: "Técnicas de respiração avançada", description: "Pratique técnicas de respiração avançada por 30 minutos.", points: 30 },
-                    { id: 328, title: "Visualização criativa", description: "Pratique visualização criativa por 25 minutos.", points: 30 },
-                    { id: 329, title: "Limpeza mental", description: "Identifique e libere crenças limitantes por 45 minutos.", points: 30 },
-                    { id: 330, title: "Prática de compaixão", description: "Dedique 30 minutos para praticar compaixão consigo e com os outros.", points: 30 }
-                ],
-                expert: [
-                    { id: 331, title: "Retiro espiritual", description: "Dedique um dia inteiro para práticas espirituais ou meditação.", points: 50 },
-                    { id: 332, title: "Jornada de autoconhecimento", description: "Reserve 4 horas para profunda reflexão e planejamento de vida.", points: 50 },
-                    { id: 333, title: "Terapia intensiva", description: "Participe de uma sessão de terapia intensiva ou grupo de apoio.", points: 50 },
-                    { id: 334, title: "Desafio de mindfulness", description: "Mantenha estado de mindfulness por 3 horas consecutivas.", points: 50 },
-                    { id: 335, title: "Programa de desenvolvimento", description: "Inicie e complete um programa de desenvolvimento pessoal de 7 dias.", points: 50 },
-                    { id: 336, title: "Prática de vedanta", description: "Estude e pratique filosofias orientais por 2 horas.", points: 50 },
-                    { id: 337, title: "Cura interior", description: "Dedique 3 horas para trabalhar em feridas emocionais.", points: 50 },
-                    { id: 338, title: "Silêncio prolongado", description: "Mantenha silêncio por 8 horas (exceto para necessidades essenciais).", points: 50 },
-                    { id: 339, title: "Jornada visionária", description: "Crie um mapa visionário para seus próximos 5 anos de vida.", points: 50 },
-                    { id: 340, title: "Terapia de exposição", description: "Enfrente conscientemente um medo ou ansiedade de forma controlada.", points: 50 }
-                ]
-            },
-            sleep: {
-                easy: [
-                    { id: 401, title: "Dormir 7 horas", description: "Tenha pelo menos 7 horas de sono de qualidade.", points: 10 },
-                    { id: 402, title: "Desligar dispositivos", description: "Desligue dispositivos 1 hora antes de dormir.", points: 10 },
-                    { id: 403, title: "Rotina noturna", description: "Estabeleça uma rotina de 20 minutos antes de dormir.", points: 10 },
-                    { id: 404, title: "Temperatura ideal", description: "Ajuste a temperatura do quarto para 18-20°C.", points: 10 },
-                    { id: 405, title: "Escuridão total", description: "Garanta que seu quarto fique completamente escuro.", points: 10 },
-                    { id: 406, title: "Silêncio ou ruído branco", description: "Use tampões ou ruído branco para melhorar o sono.", points: 10 },
-                    { id: 407, title: "Cama confortável", description: "Verifique se seu colchão e travesseiro estão adequados.", points: 10 },
-                    { id: 408, title: "Posição correta", description: "Durma em uma posição que favoreça a coluna.", points: 10 },
-                    { id: 409, title: "Hidratação noturna", description: "Beba água suficiente durante o dia, mas reduza antes de dormir.", points: 10 },
-                    { id: 410, title: "Relaxamento pré-sono", description: "Pratique 10 minutos de relaxamento antes de dormir.", points: 10 }
-                ],
-                medium: [
-                    { id: 411, title: "Rotina de sono consistente", description: "Mantenha o mesmo horário para dormir e acordar.", points: 20 },
-                    { id: 412, title: "Ambiente ideal para dormir", description: "Ajuste seu quarto para melhorar a qualidade do sono.", points: 20 },
-                    { id: 413, title: "Diário do sono", description: "Registre padrões de sono por 3 dias consecutivos.", points: 20 },
-                    { id: 414, title: "Técnicas de relaxamento", description: "Pratique técnicas de relaxamento por 15 minutos antes de dormir.", points: 20 },
-                    { id: 415, title: "Limite de cafeína", description: "Não consuma cafeína após às 14h.", points: 20 },
-                    { id: 416, title: "Jantar leve", description: "Faça um jantar leve pelo menos 3 horas antes de dormir.", points: 20 },
-                    { id: 417, title: "Exposição à luz matinal", description: "Exponha-se à luz solar por 15 minutos ao acordar.", points: 20 },
-                    { id: 418, title: "Técnica 4-7-8", description: "Pratique a técnica de respiração 4-7-8 para adormecer.", points: 20 },
-                    { id: 419, title: "Redução de álcool", description: "Evite álcool pelo menos 4 horas antes de dormir.", points: 20 },
-                    { id: 420, title: "Temperatura corporal", description: "Tome um banho morno 1-2 horas antes de dormir.", points: 20 }
-                ],
-                hard: [
-                    { id: 421, title: "Ciclo de sono consistente", description: "Mantenha horários consistentes de sono por uma semana.", points: 30 },
-                    { id: 422, title: "Rotina noturna relaxante", description: "Estabeleça uma rotina de 1 hora para relaxar antes de dormir.", points: 30 },
-                    { id: 423, title: "Tecnologia no modo noturno", description: "Use modo noturno em todos dispositivos após o pôr do sol.", points: 30 },
-                    { id: 424, title: "Exercícios para o sono", description: "Pratique exercícios específicos para melhorar a qualidade do sono.", points: 30 },
-                    { id: 425, title: "Cronograma de sonecas", description: "Estabeleça e siga um cronograma de sonecas diárias.", points: 30 },
-                    { id: 426, title: "Terapia de restrição de sono", description: "Pratique terapia de restrição de sono sob orientação.", points: 30 },
-                    { id: 427, title: "Monitoramento do sono", description: "Use um tracker de sono por 5 noites consecutivas.", points: 30 },
-                    { id: 428, title: "Ambiente otimizado", description: "Otimize completamente seu ambiente de sono (luz, som, temperatura).", points: 30 },
-                    { id: 429, title: "Ritual de 90 minutos", description: "Estabeleça um ritual de 90 minutos antes de dormir.", points: 30 },
-                    { id: 430, title: "Técnicas avançadas de relaxamento", description: "Pratique técnicas avançadas de relaxamento por 30 minutos.", points: 30 }
-                ],
-                expert: [
-                    { id: 431, title: "Padrão de sono polifásico", description: "Experimente um padrão de sono polifásico por um dia.", points: 50 },
-                    { id: 432, title: "Cronotipo adaptado", description: "Ajuste sua rotina para respeitar seu cronotipo natural por 3 dias.", points: 50 },
-                    { id: 433, title: "Higiêne do sono rigorosa", description: "Siga rigorosamente todas as regras de higiene do sono por 5 dias.", points: 50 },
-                    { id: 434, title: "Retiro de sono", description: "Dedique um fim de semana exclusivamente para melhorar seu sono.", points: 50 },
-                    { id: 435, title: "Cronograma circadiano", description: "Alinhe todas as atividades do dia com seu ritmo circadiano.", points: 50 },
-                    { id: 436, title: "Técnicas de sonhos lúcidos", description: "Pratique técnicas para induzir sonhos lúcidos.", points: 50 },
-                    { id: 437, title: "Terapia de luz", description: "Use terapia de luz para regular seu ciclo sono-vigília.", points: 50 },
-                    { id: 438, title: "Jejum de informações", description: "Evite notícias e informações estressantes por 48 horas antes de dormir.", points: 50 },
-                    { id: 439, title: "Conexão mente-corpo", description: "Pratique técnicas avançadas de conexão mente-corpo para o sono.", points: 50 },
-                    { id: 440, title: "Ciclo de sono perfeito", description: "Acorde naturalmente sem despertador por 3 dias consecutivos.", points: 50 }
-                ]
-            },
-            lifestyle: {
-                easy: [
-                    { id: 501, title: "Organizar um espaço", description: "Organize um espaço da sua casa ou trabalho.", points: 10 },
-                    { id: 502, title: "Ligar para um amigo", description: "Ligue para um amigo ou familiar para conversar.", points: 10 },
-                    { id: 503, title: "Atitude positiva", description: "Mantenha uma atitude positiva por 3 horas consecutivas.", points: 10 },
-                    { id: 504, title: "Gestão do tempo", description: "Planeje seu dia com antecedência.", points: 10 },
-                    { id: 505, title: "Pequeno gesto de gentileza", description: "Faça um pequeno gesto de gentileza para alguém.", points: 10 },
-                    { id: 506, title: "Desapego", description: "Doe ou descarte um item que não usa mais.", points: 10 },
-                    { id: 507, title: "Aprendizado diário", description: "Aprenda uma coisa nova hoje.", points: 10 },
-                    { id: 508, title: "Hidratação constante", description: "Beba 8 copos de água durante o dia.", points: 10 },
-                    { id: 509, title: "Postura corporal", description: "Mantenha boa postura por 1 hora.", points: 10 },
-                    { id: 510, title: "Respiração consciente", description: "Pare por 1 minuto e respire conscientemente.", points: 10 }
-                ],
-                medium: [
-                    { id: 511, title: "Voluntariado por 1 hora", description: "Dedique 1 hora para trabalho voluntário.", points: 20 },
-                    { id: 512, title: "Reduzir desperdício", description: "Tome uma ação para reduzir seu lixo hoje.", points: 20 },
-                    { id: 513, title: "Digital detox", description: "Fique 3 horas sem usar dispositivos digitais.", points: 20 },
-                    { id: 514, title: "Finanças pessoais", description: "Organize suas finanças pessoais por 1 hora.", points: 20 },
-                    { id: 515, title: "Comunicação não-violenta", description: "Pratique comunicação não-violenta por um dia.", points: 20 },
-                    { id: 516, title: "Autocuidado", description: "Dedique 1 hora para práticas de autocuidado.", points: 20 },
-                    { id: 517, title: "Minimalismo", description: "Remova 10 itens desnecessários do seu espaço.", points: 20 },
-                    { id: 518, title: "Conexões significativas", description: "Tenha uma conversa significativa com alguém.", points: 20 },
-                    { id: 519, title: "Gestão de estresse", description: "Pratique técnicas de gestão de estresse por 30 minutos.", points: 20 },
-                    { id: 520, title: "Planejamento de metas", description: "Defina e planeje uma meta pessoal.", points: 20 }
-                ],
-                hard: [
-                    { id: 521, title: "Dia sem redes sociais", description: "Passe um dia completo sem usar redes sociais.", points: 30 },
-                    { id: 522, title: "Doar itens não usados", description: "Separe e doe itens que não usa há mais de 6 meses.", points: 30 },
-                    { id: 523, title: "Voluntariado regular", description: "Estabeleça um compromisso de voluntariado regular.", points: 30 },
-                    { id: 524, title: "Desafio de consumo consciente", description: "Passe 3 dias sem compras não essenciais.", points: 30 },
-                    { id: 525, title: "Comunicação assertiva", description: "Pratique comunicação assertiva em todas as interações por um dia.", points: 30 },
-                    { id: 526, title: "Autossuficiência", description: "Prepare todas as suas refeições por 2 dias.", points: 30 },
-                    { id: 527, title: "Gestão de tempo rigorosa", description: "Use uma técnica avançada de gestão de tempo por 3 dias.", points: 30 },
-                    { id: 528, title: "Conexão com a natureza", description: "Passe 3 horas em contato com a natureza.", points: 30 },
-                    { id: 529, title: "Desafio de empatia", description: "Pratique empatia radical por um dia inteiro.", points: 30 },
-                    { id: 530, title: "Jornada de autoconhecimento", description: "Reserve 2 horas para reflexão profunda sobre sua vida.", points: 30 }
-                ],
-                expert: [
-                    { id: 531, title: "Dia de detox digital", description: "Passe 24 horas completamente desconectado de dispositivos.", points: 50 },
-                    { id: 532, title: "Minimalismo consciente", description: "Viva com apenas o essencial por 48 horas.", points: 50 },
-                    { id: 533, title: "Voluntariado intensivo", description: "Dedique 8 horas para trabalho voluntário em um único dia.", points: 50 },
-                    { id: 534, title: "Desafio de sustentabilidade", description: "Reduza sua pegada de carbono ao máximo por 3 dias.", points: 50 },
-                    { id: 535, title: "Comunicação não-violenta", description: "Pratique comunicação não-violenta em todas as interações por 3 dias.", points: 50 },
-                    { id: 536, title: "Jornada de autossuficiência", description: "Produza/prepare tudo que consumir por 2 dias.", points: 50 },
-                    { id: 537, title: "Desapego radical", description: "Doe 50% de itens não essenciais que você possui.", points: 50 },
-                    { id: 538, title: "Imersão cultural", description: "Viva um dia como alguém de uma cultura diferente.", points: 50 },
-                    { id: 539, title: "Terapia de exposição social", description: "Supere uma ansiedade social através de exposição gradual.", points: 50 },
-                    { id: 540, title: "Revolução pessoal", description: "Implemente uma mudança radical de estilo de vida por 5 dias.", points: 50 }
-                ]
-            }
+            easy: [
+                { id: 1, title: "Caminhada de 15 minutos", category: "fitness", description: "Dê uma caminhada de 15 minutos ao ar livre.", points: 10 },
+                { id: 2, title: "Beber 2L de água", category: "nutrition", description: "Beba pelo menos 2 litros de água durante o dia.", points: 10 },
+                { id: 3, title: "5 minutos de meditação", category: "mental", description: "Medite por 5 minutos para acalmar a mente.", points: 10 },
+                { id: 4, title: "Dormir 7 horas", category: "sleep", description: "Tenha pelo menos 7 horas de sono de qualidade.", points: 10 },
+                { id: 5, title: "Organizar um espaço", category: "lifestyle", description: "Organize um espaço da sua casa ou trabalho.", points: 10 },
+                { id: 6, title: "Alongamento matinal", category: "fitness", description: "Faça 5 minutos de alongamento ao acordar.", points: 10 },
+                { id: 7, title: "Comer uma fruta", category: "nutrition", description: "Consuma pelo menos uma fruta fresca.", points: 10 },
+                { id: 8, title: "Respiração profunda", category: "mental", description: "Pratique 3 minutos de exercícios de respiração.", points: 10 },
+                { id: 9, title: "Desligar dispositivos", category: "sleep", description: "Desligue dispositivos 1 hora antes de dormir.", points: 10 },
+                { id: 10, title: "Ligar para um amigo", category: "lifestyle", description: "Ligue para um amigo ou familiar para conversar.", points: 10 }
+            ],
+            medium: [
+                { id: 11, title: "Corrida de 30 minutos", category: "fitness", description: "Complete uma corrida de 30 minutos.", points: 20 },
+                { id: 12, title: "Refeição balanceada", category: "nutrition", description: "Prepare uma refeição com proteínas, carboidratos e vegetais.", points: 20 },
+                { id: 13, title: "Leitura por 30 minutos", category: "mental", description: "Leia um livro por pelo menos 30 minutos.", points: 20 },
+                { id: 14, title: "Rotina de sono consistente", category: "sleep", description: "Mantenha o mesmo horário para dormir e acordar.", points: 20 },
+                { id: 15, title: "Voluntariado por 1 hora", category: "lifestyle", description: "Dedique 1 hora para trabalho voluntário.", points: 20 },
+                { id: 16, title: "Treino de força", category: "fitness", description: "Faça um treino de força com peso corporal ou pesos.", points: 20 },
+                { id: 17, title: "Plano alimentar semanal", category: "nutrition", description: "Planeje todas as refeições da semana.", points: 20 },
+                { id: 18, title: "Diário de gratidão", category: "mental", description: "Anote 3 coisas pelas quais você é grato hoje.", points: 20 },
+                { id: 19, title: "Ambiente ideal para dormir", category: "sleep", description: "Ajuste seu quarto para melhorar a qualidade do sono.", points: 20 },
+                { id: 20, title: "Reduzir desperdício", category: "lifestyle", description: "Tome uma ação para reduzir seu lixo hoje.", points: 20 }
+            ],
+            hard: [
+                { id: 21, title: "Treino HIIT 45min", category: "fitness", description: "Complete um treino intervalado de alta intensidade.", points: 30 },
+                { id: 22, title: "Dia sem açúcar", category: "nutrition", description: "Passe um dia completo sem consumir açúcar refinado.", points: 30 },
+                { id: 23, title: "Aula ou curso online", category: "mental", description: "Dedique 1 hora para aprender algo novo online.", points: 30 },
+                { id: 24, title: "Ciclo de sono consistente", category: "sleep", description: "Mantenha horários consistentes de sono por uma semana.", points: 30 },
+                { id: 25, title: "Dia sem redes sociais", category: "lifestyle", description: "Passe um dia completo sem usar redes sociais.", points: 30 },
+                { id: 26, title: "Yoga avançado", category: "fitness", description: "Pratique uma sessão de yoga de 60 minutos.", points: 30 },
+                { id: 27, title: "Preparar marmitas saudáveis", category: "nutrition", description: "Prepare marmitas equilibradas para a semana.", points: 30 },
+                { id: 28, title: "Sessão de terapia", category: "mental", description: "Participe de uma sessão de terapia ou aconselhamento.", points: 30 },
+                { id: 29, title: "Rotina noturna relaxante", category: "sleep", description: "Estabeleça uma rotina de 1 hora para relaxar antes de dormir.", points: 30 },
+                { id: 30, title: "Doar itens não usados", category: "lifestyle", description: "Separe e doe itens que não usa há mais de 6 meses.", points: 30 }
+            ],
+            expert: [
+                { id: 31, title: "Maratona de exercícios", category: "fitness", description: "Complete 2 horas de atividade física variada.", points: 50 },
+                { id: 32, title: "Jejum intermitente 16/8", category: "nutrition", description: "Mantenha um jejum de 16 horas seguido de 8 horas de alimentação.", points: 50 },
+                { id: 33, title: "Meditação prolongada", category: "mental", description: "Medite por 30 minutos consecutivos.", points: 50 },
+                { id: 34, title: "Padrão de sono polifásico", category: "sleep", description: "Experimente um padrão de sono polifásico por um dia.", points: 50 },
+                { id: 35, title: "Dia de detox digital", category: "lifestyle", description: "Passe 24 horas completamente desconectado de dispositivos.", points: 50 },
+                { id: 36, title: "Treino de endurance", category: "fitness", description: "Complete uma sessão de exercícios de longa duração (90+ min).", points: 50 },
+                { id: 37, title: "Dieta plant-based por 7 dias", category: "nutrition", description: "Mantenha uma dieta baseada em plantas por uma semana.", points: 50 },
+                { id: 38, title: "Retiro de silêncio", category: "mental", description: "Fique em silêncio por 4 horas consecutivas.", points: 50 },
+                { id: 39, title: "Cronotipo adaptado", category: "sleep", description: "Ajuste sua rotina para respeitar seu cronotipo natural por 3 dias.", points: 50 },
+                { id: 40, title: "Minimalismo consciente", category: "lifestyle", description: "Viva com apenas o essencial por 48 horas.", points: 50 }
+            ]
         };
 
         // DOM Elements
-        const challengesContainers = {
-            fitness: document.getElementById('fitnessChallenges'),
-            nutrition: document.getElementById('nutritionChallenges'),
-            mental: document.getElementById('mentalChallenges'),
-            sleep: document.getElementById('sleepChallenges'),
-            lifestyle: document.getElementById('lifestyleChallenges')
-        };
-        
+        const challengesContainer = document.getElementById('challengesContainer');
         const difficultyTabs = document.querySelectorAll('.difficulty-tab');
         const filterButtons = document.querySelectorAll('.filter-btn');
         const loginBtn = document.getElementById('loginBtn');
@@ -1113,11 +1552,23 @@
         const registerModal = document.getElementById('registerModal');
         const closeModalButtons = document.querySelectorAll('.close-modal');
         const userPointsElement = document.getElementById('userPoints');
-        const progressFill = document.getElementById('progressFill');
-        const progressPercentage = document.getElementById('progressPercentage');
-        const searchInput = document.getElementById('searchInput');
+        const dailyProgress = document.getElementById('dailyProgress');
+        const weeklyProgress = document.getElementById('weeklyProgress');
+        const streakCount = document.getElementById('streakCount');
+        const completedCount = document.getElementById('completedCount');
+        const badgeCount = document.getElementById('badgeCount');
         const confirmLogin = document.getElementById('confirmLogin');
         const confirmRegister = document.getElementById('confirmRegister');
+        const cancelLogin = document.getElementById('cancelLogin');
+        const cancelRegister = document.getElementById('cancelRegister');
+        const userActions = document.getElementById('userActions');
+        const userMenu = document.getElementById('userMenu');
+        const userAvatar = document.getElementById('userAvatar');
+        const userName = document.getElementById('userName');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const welcomeTitle = document.getElementById('welcomeTitle');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const contentSections = document.querySelectorAll('.content-section');
 
         // Current state
         let currentDifficulty = 'easy';
@@ -1125,44 +1576,45 @@
         let userPoints = 0;
         let completedChallenges = [];
         let currentUser = null;
+        let streak = 0;
+        let dailyCompleted = 0;
+        let weeklyCompleted = 0;
 
         // Initialize the app
         function init() {
-            displayAllChallenges();
-            setupEventListeners();
-            loadUserData();
-            updateProgress();
-        }
-
-        // Display challenges for all categories
-        function displayAllChallenges() {
-            for (const category in challengesContainers) {
-                displayChallenges(category);
+            // Check if user is already logged in
+            const savedUser = localStorage.getItem('healthBoostCurrentUser');
+            if (savedUser) {
+                currentUser = savedUser;
+                loadUserData();
+                showUserMenu();
             }
+            
+            displayChallenges();
+            setupEventListeners();
+            updateProgress();
+            updateStats();
         }
 
         // Display challenges based on current filters
-        function displayChallenges(category) {
-            const container = challengesContainers[category];
-            container.innerHTML = '';
+        function displayChallenges() {
+            challengesContainer.innerHTML = '';
             
-            const categoryChallenges = challenges[category][currentDifficulty];
-            const searchTerm = searchInput.value.toLowerCase();
+            const currentChallenges = challenges[currentDifficulty];
             
-            categoryChallenges.forEach(challenge => {
-                if (searchTerm && !challenge.title.toLowerCase().includes(searchTerm) && 
-                    !challenge.description.toLowerCase().includes(searchTerm)) {
+            currentChallenges.forEach(challenge => {
+                if (currentCategory !== 'all' && challenge.category !== currentCategory) {
                     return;
                 }
                 
                 const isCompleted = completedChallenges.includes(challenge.id);
                 
                 const challengeCard = document.createElement('div');
-                challengeCard.className = 'challenge-card';
+                challengeCard.className = 'challenge-card fade-in';
                 
                 challengeCard.innerHTML = `
-                    <div class="challenge-header category-${category}">
-                        <span>${getCategoryName(category)}</span>
+                    <div class="challenge-header category-${challenge.category}">
+                        <span>${getCategoryName(challenge.category)}</span>
                         <span class="challenge-difficulty difficulty-${currentDifficulty}">${getDifficultyName(currentDifficulty)}</span>
                     </div>
                     <div class="challenge-content">
@@ -1173,18 +1625,18 @@
                                 <i class="fas fa-coins"></i>
                                 ${challenge.points} pontos
                             </div>
-                            <button class="challenge-action" data-id="${challenge.id}" ${isCompleted ? 'disabled style="opacity:0.6"' : ''}>
-                                ${isCompleted ? 'Concluído' : 'Iniciar'}
+                            <button class="challenge-action" data-id="${challenge.id}" ${isCompleted || !currentUser ? 'disabled style="opacity:0.6"' : ''}>
+                                ${isCompleted ? 'Concluído' : (!currentUser ? 'Faça login' : 'Iniciar')} <i class="fas fa-arrow-right"></i>
                             </button>
                         </div>
                     </div>
                 `;
                 
-                container.appendChild(challengeCard);
+                challengesContainer.appendChild(challengeCard);
             });
             
             // Add event listeners to challenge buttons
-            container.querySelectorAll('.challenge-action:not([disabled])').forEach(button => {
+            document.querySelectorAll('.challenge-action:not([disabled])').forEach(button => {
                 button.addEventListener('click', function() {
                     const challengeId = parseInt(this.getAttribute('data-id'));
                     completeChallenge(challengeId);
@@ -1219,41 +1671,165 @@
 
         // Complete a challenge and award points
         function completeChallenge(challengeId) {
-            // Find the challenge in any category and difficulty
-            for (const category in challenges) {
-                for (const difficulty in challenges[category]) {
-                    const challenge = challenges[category][difficulty].find(c => c.id === challengeId);
-                    if (challenge) {
-                        userPoints += challenge.points;
-                        completedChallenges.push(challengeId);
-                        userPointsElement.textContent = `${userPoints} pontos`;
-                        saveUserData();
-                        updateProgress();
-                        
-                        alert(`Parabéns! Você completou "${challenge.title}" e ganhou ${challenge.points} pontos!`);
-                        
-                        // Refresh display
-                        displayAllChallenges();
-                        return;
-                    }
+            if (!currentUser) {
+                alert('Você precisa estar logado para completar desafios!');
+                loginModal.style.display = 'flex';
+                return;
+            }
+            
+            // Find the challenge in any difficulty
+            for (const difficulty in challenges) {
+                const challenge = challenges[difficulty].find(c => c.id === challengeId);
+                if (challenge) {
+                    userPoints += challenge.points;
+                    completedChallenges.push(challengeId);
+                    dailyCompleted++;
+                    weeklyCompleted++;
+                    
+                    userPointsElement.textContent = `${userPoints} pontos`;
+                    saveUserData();
+                    updateProgress();
+                    updateStats();
+                    
+                    // Show celebration effect
+                    showCelebration(challenge.points);
+                    
+                    // Refresh display
+                    displayChallenges();
+                    return;
                 }
             }
         }
 
-        // Update progress bar
+        // Show celebration effect
+        function showCelebration(points) {
+            const celebration = document.createElement('div');
+            celebration.style.position = 'fixed';
+            celebration.style.top = '0';
+            celebration.style.left = '0';
+            celebration.style.width = '100%';
+            celebration.style.height = '100%';
+            celebration.style.display = 'flex';
+            celebration.style.flexDirection = 'column';
+            celebration.style.alignItems = 'center';
+            celebration.style.justifyContent = 'center';
+            celebration.style.background = 'rgba(0, 0, 0, 0.7)';
+            celebration.style.zIndex = '2000';
+            celebration.style.color = 'white';
+            celebration.style.fontSize = '24px';
+            celebration.style.fontWeight = 'bold';
+            celebration.style.backdropFilter = 'blur(5px)';
+            
+            celebration.innerHTML = `
+                <div style="text-align: center;">
+                    <i class="fas fa-trophy" style="font-size: 64px; color: #F59E0B; margin-bottom: 20px;"></i>
+                    <h2 style="font-size: 32px; margin-bottom: 10px;">Parabéns!</h2>
+                    <p>Você ganhou ${points} pontos!</p>
+                </div>
+            `;
+            
+            document.body.appendChild(celebration);
+            
+            // Remove celebration after 2 seconds
+            setTimeout(() => {
+                document.body.removeChild(celebration);
+            }, 2000);
+        }
+
+        // Update progress bars
         function updateProgress() {
-            let totalChallenges = 0;
-            for (const category in challenges) {
-                for (const difficulty in challenges[category]) {
-                    totalChallenges += challenges[category][difficulty].length;
+            const dailyPercentage = Math.min(100, (dailyCompleted / 5) * 100);
+            const weeklyPercentage = Math.min(100, (weeklyCompleted / 20) * 100);
+            
+            dailyProgress.style.width = `${dailyPercentage}%`;
+            weeklyProgress.style.width = `${weeklyPercentage}%`;
+            
+            document.querySelectorAll('.progress-info span:first-child').forEach(el => {
+                if (el.parentElement.previousElementSibling.id === 'dailyProgress') {
+                    el.textContent = `${Math.round(dailyPercentage)}% completo`;
+                } else {
+                    el.textContent = `${Math.round(weeklyPercentage)}% completo`;
+                }
+            });
+        }
+
+        // Update stats
+        function updateStats() {
+            streakCount.textContent = `${streak} dias`;
+            completedCount.textContent = completedChallenges.length;
+            
+            // Calculate badges based on completed challenges
+            const badges = Math.floor(completedChallenges.length / 5);
+            badgeCount.textContent = badges;
+            
+            // Update category completed counts
+            const categoryCounts = {
+                fitness: 0,
+                nutrition: 0,
+                mental: 0,
+                sleep: 0,
+                lifestyle: 0
+            };
+            
+            completedChallenges.forEach(id => {
+                for (const difficulty in challenges) {
+                    const challenge = challenges[difficulty].find(c => c.id === id);
+                    if (challenge) {
+                        categoryCounts[challenge.category]++;
+                        break;
+                    }
+                }
+            });
+            
+            for (const category in categoryCounts) {
+                const element = document.getElementById(`${category}Completed`);
+                if (element) {
+                    element.textContent = categoryCounts[category];
                 }
             }
+        }
+
+        // Show user menu when logged in
+        function showUserMenu() {
+            userActions.style.display = 'none';
+            userMenu.style.display = 'flex';
             
-            const completedCount = completedChallenges.length;
-            const percentage = Math.round((completedCount / totalChallenges) * 100);
+            // Get user data
+            const users = JSON.parse(localStorage.getItem('healthBoostUsers')) || [];
+            const user = users.find(u => u.email === currentUser);
             
-            progressFill.style.width = `${percentage}%`;
-            progressPercentage.textContent = `${percentage}%`;
+            if (user) {
+                // Set user name and avatar
+                userName.textContent = user.name;
+                userAvatar.textContent = user.name.charAt(0).toUpperCase();
+                welcomeTitle.textContent = `Bem-vindo, ${user.name.split(' ')[0]}!`;
+            }
+        }
+
+        // Show login/register buttons when logged out
+        function showLoginButtons() {
+            userActions.style.display = 'flex';
+            userMenu.style.display = 'none';
+            welcomeTitle.textContent = 'Bem-vindo ao HealthBoost!';
+        }
+
+        // Switch between content sections
+        function switchSection(sectionId) {
+            // Hide all sections
+            contentSections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Update active nav link
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-section') === sectionId) {
+                    link.classList.add('active');
+                }
+            });
         }
 
         // Set up event listeners
@@ -1264,7 +1840,7 @@
                     difficultyTabs.forEach(t => t.classList.remove('active'));
                     this.classList.add('active');
                     currentDifficulty = this.getAttribute('data-difficulty');
-                    displayAllChallenges();
+                    displayChallenges();
                 });
             });
             
@@ -1274,22 +1850,32 @@
                     filterButtons.forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
                     currentCategory = this.getAttribute('data-category');
-                    
-                    if (currentCategory === 'all') {
-                        document.querySelectorAll('.category-section').forEach(section => {
-                            section.style.display = 'block';
-                        });
-                    } else {
-                        document.querySelectorAll('.category-section').forEach(section => {
-                            section.style.display = 'none';
-                        });
-                        document.getElementById(currentCategory).style.display = 'block';
-                    }
+                    displayChallenges();
                 });
             });
             
-            // Search input
-            searchInput.addEventListener('input', displayAllChallenges);
+            // Category cards
+            document.querySelectorAll('.category-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    document.querySelector(`.filter-btn[data-category="${category}"]`).classList.add('active');
+                    currentCategory = category;
+                    displayChallenges();
+                    
+                    // Scroll to challenges section
+                    document.querySelector('.challenges-section').scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+            
+            // Navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const sectionId = this.getAttribute('data-section');
+                    switchSection(sectionId);
+                });
+            });
             
             // Modal controls
             loginBtn.addEventListener('click', () => {
@@ -1307,6 +1893,14 @@
                 });
             });
             
+            cancelLogin.addEventListener('click', () => {
+                loginModal.style.display = 'none';
+            });
+            
+            cancelRegister.addEventListener('click', () => {
+                registerModal.style.display = 'none';
+            });
+            
             // Close modal when clicking outside
             window.addEventListener('click', (event) => {
                 if (event.target === loginModal) {
@@ -1321,14 +1915,8 @@
             confirmLogin.addEventListener('click', handleLogin);
             confirmRegister.addEventListener('click', handleRegister);
             
-            // Special challenge button
-            document.querySelector('[data-id="special"]').addEventListener('click', function() {
-                userPoints += 50;
-                userPointsElement.textContent = `${userPoints} pontos`;
-                saveUserData();
-                updateProgress();
-                alert('Parabéns! Você completou o desafio especial e ganhou 50 pontos extras!');
-            });
+            // Logout action
+            logoutBtn.addEventListener('click', handleLogout);
         }
 
         // Handle login
@@ -1341,15 +1929,23 @@
                 return;
             }
             
-            // Simulate login process
+            // Check if user exists
             const users = JSON.parse(localStorage.getItem('healthBoostUsers')) || [];
             const user = users.find(u => u.email === email && u.password === password);
             
             if (user) {
                 currentUser = user.email;
+                localStorage.setItem('healthBoostCurrentUser', currentUser);
                 loadUserData();
                 loginModal.style.display = 'none';
-                alert(`Bem-vindo de volta, ${user.name}!`);
+                showUserMenu();
+                
+                // Clear login form
+                document.getElementById('loginEmail').value = '';
+                document.getElementById('loginPassword').value = '';
+                
+                // Update UI
+                displayChallenges();
             } else {
                 alert('E-mail ou senha incorretos.');
             }
@@ -1372,7 +1968,7 @@
                 return;
             }
             
-            // Simulate registration process
+            // Check if email is already registered
             const users = JSON.parse(localStorage.getItem('healthBoostUsers')) || [];
             
             if (users.some(u => u.email === email)) {
@@ -1380,16 +1976,51 @@
                 return;
             }
             
+            // Add new user
             users.push({ name, email, password });
             localStorage.setItem('healthBoostUsers', JSON.stringify(users));
             
+            // Set as current user
             currentUser = email;
+            localStorage.setItem('healthBoostCurrentUser', currentUser);
+            
+            // Initialize user data
             userPoints = 0;
             completedChallenges = [];
+            dailyCompleted = 0;
+            weeklyCompleted = 0;
+            streak = 0;
             saveUserData();
+            updateStats();
+            updateProgress();
             
             registerModal.style.display = 'none';
+            showUserMenu();
+            
+            // Clear registration form
+            document.getElementById('registerName').value = '';
+            document.getElementById('registerEmail').value = '';
+            document.getElementById('registerPassword').value = '';
+            document.getElementById('registerConfirmPassword').value = '';
+            
             alert(`Conta criada com sucesso! Bem-vindo(a) ao HealthBoost, ${name}!`);
+        }
+
+        // Handle logout
+        function handleLogout() {
+            currentUser = null;
+            localStorage.removeItem('healthBoostCurrentUser');
+            showLoginButtons();
+            
+            // Reset UI
+            userPoints = 0;
+            completedChallenges = [];
+            dailyCompleted = 0;
+            weeklyCompleted = 0;
+            userPointsElement.textContent = '0 pontos';
+            updateStats();
+            updateProgress();
+            displayChallenges();
         }
 
         // Save user data to localStorage
@@ -1397,7 +2028,11 @@
             if (currentUser) {
                 const userData = {
                     points: userPoints,
-                    completedChallenges: completedChallenges
+                    completedChallenges: completedChallenges,
+                    dailyCompleted: dailyCompleted,
+                    weeklyCompleted: weeklyCompleted,
+                    streak: streak,
+                    lastLogin: new Date().toISOString()
                 };
                 localStorage.setItem(`healthBoostData_${currentUser}`, JSON.stringify(userData));
             }
@@ -1411,8 +2046,27 @@
                     const userData = JSON.parse(savedData);
                     userPoints = userData.points || 0;
                     completedChallenges = userData.completedChallenges || [];
+                    dailyCompleted = userData.dailyCompleted || 0;
+                    weeklyCompleted = userData.weeklyCompleted || 0;
+                    streak = userData.streak || 0;
                     userPointsElement.textContent = `${userPoints} pontos`;
+                    
+                    // Check if last login was yesterday for streak
+                    if (userData.lastLogin) {
+                        const lastLogin = new Date(userData.lastLogin);
+                        const today = new Date();
+                        const yesterday = new Date(today);
+                        yesterday.setDate(yesterday.getDate() - 1);
+                        
+                        if (lastLogin.toDateString() === yesterday.toDateString()) {
+                            streak++;
+                        } else if (lastLogin.toDateString() !== today.toDateString()) {
+                            streak = 1;
+                        }
+                    }
+                    
                     updateProgress();
+                    updateStats();
                 }
             }
         }
