@@ -21,6 +21,21 @@
             --danger: #EF4444;
             --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             --transition: all 0.3s ease;
+            
+            /* Dark mode variables */
+            --bg-primary: #F8FAFC;
+            --bg-secondary: #FFFFFF;
+            --text-primary: #1E293B;
+            --text-secondary: #64748B;
+            --border-color: #E2E8F0;
+        }
+
+        .dark-mode {
+            --bg-primary: #0F172A;
+            --bg-secondary: #1E293B;
+            --text-primary: #F1F5F9;
+            --text-secondary: #94A3B8;
+            --border-color: #334155;
         }
         
         * {
@@ -31,10 +46,11 @@
         
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%);
-            color: var(--dark);
+            background: var(--bg-primary);
+            color: var(--text-primary);
             line-height: 1.6;
             min-height: 100vh;
+            transition: var(--transition);
         }
         
         .container {
@@ -144,6 +160,16 @@
             background-color: rgba(255, 255, 255, 0.1);
         }
         
+        /* Theme Toggle */
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 20px;
+            margin-right: 15px;
+        }
+        
         /* Main Content */
         .main-content {
             padding: 30px 0;
@@ -192,10 +218,11 @@
         }
         
         .stats-card {
-            background: white;
+            background: var(--bg-secondary);
             border-radius: 16px;
             padding: 25px;
             box-shadow: var(--card-shadow);
+            transition: var(--transition);
         }
         
         .stats-header {
@@ -245,7 +272,7 @@
         
         .stat-label {
             font-size: 14px;
-            color: var(--gray);
+            color: var(--text-secondary);
         }
         
         /* Progress Section */
@@ -257,10 +284,11 @@
         }
         
         .progress-card {
-            background: white;
+            background: var(--bg-secondary);
             border-radius: 16px;
             padding: 25px;
             box-shadow: var(--card-shadow);
+            transition: var(--transition);
         }
         
         .progress-header {
@@ -268,7 +296,6 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
-            position: relative;
         }
         
         .progress-title {
@@ -279,7 +306,7 @@
         
         .progress-bar {
             height: 12px;
-            background-color: #E2E8F0;
+            background-color: var(--border-color);
             border-radius: 10px;
             overflow: hidden;
             margin-bottom: 10px;
@@ -297,7 +324,7 @@
             display: flex;
             justify-content: space-between;
             font-size: 14px;
-            color: var(--gray);
+            color: var(--text-secondary);
         }
         
         /* Categories Section */
@@ -310,7 +337,7 @@
             font-size: 24px;
             font-weight: 700;
             margin-bottom: 20px;
-            color: var(--dark);
+            color: var(--text-primary);
             display: flex;
             align-items: center;
             gap: 12px;
@@ -327,7 +354,7 @@
         }
         
         .category-card {
-            background: white;
+            background: var(--bg-secondary);
             border-radius: 16px;
             padding: 25px;
             box-shadow: var(--card-shadow);
@@ -361,7 +388,7 @@
         
         .category-desc {
             font-size: 14px;
-            color: var(--gray);
+            color: var(--text-secondary);
             margin-bottom: 15px;
         }
         
@@ -385,7 +412,7 @@
         
         .stat-label {
             font-size: 12px;
-            color: var(--gray);
+            color: var(--text-secondary);
         }
         
         /* Challenges Section */
@@ -408,12 +435,13 @@
         
         .filter-btn {
             padding: 8px 16px;
-            background-color: white;
-            border: 1px solid #E2E8F0;
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
             border-radius: 8px;
             cursor: pointer;
             transition: var(--transition);
             font-size: 14px;
+            color: var(--text-primary);
         }
         
         .filter-btn.active, .filter-btn:hover {
@@ -424,7 +452,7 @@
         
         .difficulty-tabs {
             display: flex;
-            background: #F1F5F9;
+            background: var(--border-color);
             border-radius: 12px;
             padding: 5px;
             margin-bottom: 20px;
@@ -438,10 +466,11 @@
             transition: var(--transition);
             flex: 1;
             text-align: center;
+            color: var(--text-primary);
         }
         
         .difficulty-tab.active {
-            background: white;
+            background: var(--bg-secondary);
             color: var(--primary);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
@@ -453,7 +482,7 @@
         }
         
         .challenge-card {
-            background-color: white;
+            background-color: var(--bg-secondary);
             border-radius: 16px;
             overflow: hidden;
             box-shadow: var(--card-shadow);
@@ -492,10 +521,11 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            color: var(--text-primary);
         }
         
         .challenge-description {
-            color: var(--gray);
+            color: var(--text-secondary);
             font-size: 14px;
             margin-bottom: 20px;
             line-height: 1.5;
@@ -562,7 +592,7 @@
         }
         
         .modal-content {
-            background-color: white;
+            background-color: var(--bg-secondary);
             border-radius: 16px;
             width: 90%;
             max-width: 500px;
@@ -582,6 +612,7 @@
             font-family: 'Montserrat', sans-serif;
             font-size: 24px;
             font-weight: 600;
+            color: var(--text-primary);
         }
         
         .close-modal {
@@ -589,7 +620,7 @@
             border: none;
             font-size: 24px;
             cursor: pointer;
-            color: var(--gray);
+            color: var(--text-secondary);
         }
         
         .form-group {
@@ -600,15 +631,18 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
+            color: var(--text-primary);
         }
         
         .form-group input {
             width: 100%;
             padding: 14px 16px;
-            border: 1px solid #E2E8F0;
+            border: 1px solid var(--border-color);
             border-radius: 8px;
             font-family: 'Poppins', sans-serif;
             transition: var(--transition);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
         }
         
         .form-group input:focus {
@@ -703,7 +737,7 @@
         }
         
         .badge {
-            background: white;
+            background: var(--bg-secondary);
             border-radius: 16px;
             padding: 20px;
             text-align: center;
@@ -725,11 +759,12 @@
         .badge-title {
             font-size: 14px;
             font-weight: 600;
+            color: var(--text-primary);
         }
         
         .badge-desc {
             font-size: 12px;
-            color: var(--gray);
+            color: var(--text-secondary);
         }
         
         /* Streak */
@@ -737,7 +772,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            background: white;
+            background: var(--bg-secondary);
             padding: 15px;
             border-radius: 12px;
             box-shadow: var(--card-shadow);
@@ -766,7 +801,7 @@
         
         .streak-label {
             font-size: 14px;
-            color: var(--gray);
+            color: var(--text-secondary);
         }
         
         /* User menu */
@@ -812,7 +847,7 @@
         
         /* Ranking styles */
         .ranking-list {
-            background: white;
+            background: var(--bg-secondary);
             border-radius: 16px;
             padding: 25px;
             box-shadow: var(--card-shadow);
@@ -822,7 +857,7 @@
             display: flex;
             align-items: center;
             padding: 15px;
-            border-bottom: 1px solid #E2E8F0;
+            border-bottom: 1px solid var(--border-color);
         }
         
         .ranking-item:last-child {
@@ -848,10 +883,11 @@
         
         .ranking-name {
             font-weight: 600;
+            color: var(--text-primary);
         }
         
         .ranking-points {
-            color: var(--gray);
+            color: var(--text-secondary);
             font-size: 14px;
         }
         
@@ -863,11 +899,16 @@
         }
         
         .community-card {
-            background: white;
+            background: var(--bg-secondary);
             border-radius: 16px;
             padding: 25px;
             box-shadow: var(--card-shadow);
             text-align: center;
+            transition: var(--transition);
+        }
+        
+        .community-card:hover {
+            transform: translateY(-5px);
         }
         
         .community-icon {
@@ -881,10 +922,11 @@
             font-size: 20px;
             font-weight: 600;
             margin-bottom: 10px;
+            color: var(--text-primary);
         }
         
         .community-desc {
-            color: var(--gray);
+            color: var(--text-secondary);
             margin-bottom: 20px;
         }
         
@@ -896,13 +938,18 @@
         }
         
         .achievement-card {
-            background: white;
+            background: var(--bg-secondary);
             border-radius: 16px;
             padding: 25px;
             box-shadow: var(--card-shadow);
             text-align: center;
             position: relative;
             overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-5px);
         }
         
         .achievement-badge {
@@ -916,17 +963,18 @@
             font-size: 18px;
             font-weight: 600;
             margin-bottom: 10px;
+            color: var(--text-primary);
         }
         
         .achievement-desc {
-            color: var(--gray);
+            color: var(--text-secondary);
             margin-bottom: 15px;
             font-size: 14px;
         }
         
         .achievement-progress {
             height: 8px;
-            background-color: #E2E8F0;
+            background-color: var(--border-color);
             border-radius: 4px;
             overflow: hidden;
             margin-bottom: 10px;
@@ -940,11 +988,341 @@
         
         .achievement-status {
             font-size: 12px;
-            color: var(--gray);
+            color: var(--text-secondary);
+        }
+        
+        /* Notifications */
+        .notification-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .notification {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: slideIn 0.3s ease;
+            max-width: 350px;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        .notification-icon {
+            font-size: 20px;
+        }
+        
+        .notification-success {
+            border-left: 4px solid var(--success);
+        }
+        
+        .notification-warning {
+            border-left: 4px solid var(--warning);
+        }
+        
+        .notification-info {
+            border-left: 4px solid var(--primary);
+        }
+        
+        /* Export Section */
+        .export-section {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 30px;
+        }
+        
+        .export-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .export-option {
+            background: var(--bg-primary);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .export-option:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--card-shadow);
+        }
+        
+        .export-icon {
+            font-size: 32px;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .export-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--text-primary);
+        }
+        
+        .export-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        /* Group Challenges */
+        .group-challenges {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .group-challenge {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+        
+        .group-challenge:hover {
+            transform: translateY(-5px);
+        }
+        
+        .group-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .group-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+        .group-info {
+            flex: 1;
+        }
+        
+        .group-name {
+            font-weight: 600;
+            font-size: 18px;
+            color: var(--text-primary);
+        }
+        
+        .group-members {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .group-progress {
+            height: 8px;
+            background: var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+        
+        .group-progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, var(--primary-light), var(--primary));
+            border-radius: 4px;
+        }
+        
+        /* Share buttons */
+        .share-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .share-btn {
+            padding: 8px 15px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+        
+        .share-facebook {
+            background: #3b5998;
+            color: white;
+        }
+        
+        .share-twitter {
+            background: #1da1f2;
+            color: white;
+        }
+        
+        .share-whatsapp {
+            background: #25d366;
+            color: white;
+        }
+        
+        /* Settings panel */
+        .settings-panel {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 30px;
+        }
+        
+        .settings-group {
+            margin-bottom: 25px;
+        }
+        
+        .settings-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+        
+        .settings-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .settings-option:last-child {
+            border-bottom: none;
+        }
+        
+        .option-info {
+            flex: 1;
+        }
+        
+        .option-title {
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: var(--text-primary);
+        }
+        
+        .option-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        /* Toggle switch */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+        
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--border-color);
+            transition: .4s;
+            border-radius: 24px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: var(--primary);
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        
+        /* API connection status */
+        .api-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        
+        .status-connected {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        
+        .status-disconnected {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+        
+        /* Loading spinner */
+        .spinner {
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(59, 130, 246, 0.3);
+            border-radius: 50%;
+            border-top: 3px solid var(--primary);
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
+    <!-- Notification Container -->
+    <div class="notification-container" id="notificationContainer"></div>
+
     <!-- Header with Navigation -->
     <header>
         <div class="container">
@@ -959,16 +1337,22 @@
                         <li><a href="#" class="nav-link" data-section="achievements"><i class="fas fa-trophy"></i> Conquistas</a></li>
                         <li><a href="#" class="nav-link" data-section="ranking"><i class="fas fa-chart-line"></i> Ranking</a></li>
                         <li><a href="#" class="nav-link" data-section="community"><i class="fas fa-users"></i> Comunidade</a></li>
+                        <li><a href="#" class="nav-link" data-section="settings"><i class="fas fa-cog"></i> Configurações</a></li>
                     </ul>
                 </nav>
-                <div class="user-actions" id="userActions">
-                    <button class="btn btn-outline" id="loginBtn">Entrar</button>
-                    <button class="btn btn-primary" id="registerBtn">Cadastrar</button>
-                </div>
-                <div class="user-menu" id="userMenu" style="display: none;">
-                    <div class="user-avatar" id="userAvatar"></div>
-                    <div class="user-name" id="userName"></div>
-                    <button class="logout-btn" id="logoutBtn">Sair</button>
+                <div class="user-actions">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <div class="user-actions" id="userActions">
+                        <button class="btn btn-outline" id="loginBtn">Entrar</button>
+                        <button class="btn btn-primary" id="registerBtn">Cadastrar</button>
+                    </div>
+                    <div class="user-menu" id="userMenu" style="display: none;">
+                        <div class="user-avatar" id="userAvatar"></div>
+                        <div class="user-name" id="userName"></div>
+                        <button class="logout-btn" id="logoutBtn">Sair</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1055,6 +1439,60 @@
                     <div class="progress-info">
                         <span>0% completo</span>
                         <span>Meta: 100%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Group Challenges Section -->
+            <div class="challenges-section">
+                <div class="section-header">
+                    <h2 class="section-title"><i class="fas fa-users"></i> Desafios em Grupo</h2>
+                    <button class="btn btn-primary" id="createGroupBtn">
+                        <i class="fas fa-plus"></i> Criar Grupo
+                    </button>
+                </div>
+                
+                <div class="group-challenges" id="groupChallengesContainer">
+                    <div class="group-challenge fade-in">
+                        <div class="group-header">
+                            <div class="group-avatar">CF</div>
+                            <div class="group-info">
+                                <div class="group-name">Corrida Fitness</div>
+                                <div class="group-members">8 membros</div>
+                            </div>
+                        </div>
+                        <p>Complete 30km de corrida esta semana com o grupo!</p>
+                        <div class="group-progress">
+                            <div class="group-progress-fill" style="width: 65%"></div>
+                        </div>
+                        <div class="progress-info">
+                            <span>65% completo</span>
+                            <span>Meta: 30km</span>
+                        </div>
+                        <button class="challenge-action">
+                            Participar <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="group-challenge fade-in">
+                        <div class="group-header">
+                            <div class="group-avatar">AN</div>
+                            <div class="group-info">
+                                <div class="group-name">Alimentação Natural</div>
+                                <div class="group-members">12 membros</div>
+                            </div>
+                        </div>
+                        <p>7 dias de refeições saudáveis sem açúcar refinado!</p>
+                        <div class="group-progress">
+                            <div class="group-progress-fill" style="width: 42%"></div>
+                        </div>
+                        <div class="progress-info">
+                            <span>42% completo</span>
+                            <span>Dia 3 de 7</span>
+                        </div>
+                        <button class="challenge-action">
+                            Participar <i class="fas fa-arrow-right"></i>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -1158,7 +1596,7 @@
             <!-- Challenges Section -->
             <div class="challenges-section">
                 <div class="section-header">
-                    <h2 class="section-title"><i class="fas fa-tasks"></i> Desafios</h2>
+                    <h2 class="section-title"><i class="fas fa-tasks"></i> Desafios Individuais</h2>
                     <div class="filters">
                         <button class="filter-btn active" data-category="all">Todos</button>
                         <button class="filter-btn" data-category="fitness">Fitness</button>
@@ -1232,6 +1670,18 @@
                         <div class="badge-title">Estilo de Vida</div>
                         <div class="badge-desc">Complete 3 desafios de estilo de vida</div>
                     </div>
+                </div>
+                
+                <div class="share-buttons" style="justify-content: center; margin-top: 30px;">
+                    <button class="share-btn share-facebook" onclick="shareAchievement('facebook')">
+                        <i class="fab fa-facebook-f"></i> Compartilhar
+                    </button>
+                    <button class="share-btn share-twitter" onclick="shareAchievement('twitter')">
+                        <i class="fab fa-twitter"></i> Compartilhar
+                    </button>
+                    <button class="share-btn share-whatsapp" onclick="shareAchievement('whatsapp')">
+                        <i class="fab fa-whatsapp"></i> Compartilhar
+                    </button>
                 </div>
             </div>
         </section>
@@ -1311,6 +1761,37 @@
                         <div class="achievement-progress-fill" style="width: 0%"></div>
                     </div>
                     <div class="achievement-status">0 de 10 completos</div>
+                </div>
+            </div>
+            
+            <div class="export-section">
+                <h3 class="section-title"><i class="fas fa-download"></i> Exportar Conquistas</h3>
+                <p>Exporte seu progresso e compartilhe suas conquistas!</p>
+                
+                <div class="export-options">
+                    <div class="export-option" onclick="exportData('pdf')">
+                        <div class="export-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="export-title">Exportar PDF</div>
+                        <div class="export-desc">Relatório detalhado em PDF</div>
+                    </div>
+                    
+                    <div class="export-option" onclick="exportData('csv')">
+                        <div class="export-icon">
+                            <i class="fas fa-file-csv"></i>
+                        </div>
+                        <div class="export-title">Exportar CSV</div>
+                        <div class="export-desc">Dados brutos para análise</div>
+                    </div>
+                    
+                    <div class="export-option" onclick="exportData('image')">
+                        <div class="export-icon">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        <div class="export-title">Exportar Imagem</div>
+                        <div class="export-desc">Compartilhe nas redes sociais</div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1400,6 +1881,37 @@
                     </div>
                 </div>
             </div>
+            
+            <div class="export-section">
+                <h3 class="section-title"><i class="fas fa-download"></i> Exportar Ranking</h3>
+                <p>Exporte o ranking completo para acompanhar sua evolução!</p>
+                
+                <div class="export-options">
+                    <div class="export-option" onclick="exportRanking('pdf')">
+                        <div class="export-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="export-title">Exportar PDF</div>
+                        <div class="export-desc">Relatório completo em PDF</div>
+                    </div>
+                    
+                    <div class="export-option" onclick="exportRanking('csv')">
+                        <div class="export-icon">
+                            <i class="fas fa-file-csv"></i>
+                        </div>
+                        <div class="export-title">Exportar CSV</div>
+                        <div class="export-desc">Dados para análise externa</div>
+                    </div>
+                    
+                    <div class="export-option" onclick="exportRanking('image')">
+                        <div class="export-icon">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        <div class="export-title">Exportar Imagem</div>
+                        <div class="export-desc">Compartilhe sua posição</div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Community Section -->
@@ -1432,6 +1944,199 @@
                     <h3 class="community-title">Competições</h3>
                     <p class="community-desc">Participe de competições saudáveis para ver quem consegue mais pontos em determinados desafios.</p>
                     <button class="btn btn-primary">Competir</button>
+                </div>
+            </div>
+            
+            <div class="group-challenges">
+                <h3 class="section-title"><i class="fas fa-users"></i> Grupos Ativos</h3>
+                
+                <div class="group-challenge fade-in">
+                    <div class="group-header">
+                        <div class="group-avatar">CF</div>
+                        <div class="group-info">
+                            <div class="group-name">Corrida Fitness</div>
+                            <div class="group-members">8 membros</div>
+                        </div>
+                    </div>
+                    <p>Complete 30km de corrida esta semana com o grupo!</p>
+                    <div class="group-progress">
+                        <div class="group-progress-fill" style="width: 65%"></div>
+                    </div>
+                    <div class="progress-info">
+                        <span>65% completo</span>
+                        <span>Meta: 30km</span>
+                    </div>
+                    <button class="challenge-action">
+                        Participar <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+                
+                <div class="group-challenge fade-in">
+                    <div class="group-header">
+                        <div class="group-avatar">AN</div>
+                        <div class="group-info">
+                            <div class="group-name">Alimentação Natural</div>
+                            <div class="group-members">12 membros</div>
+                        </div>
+                    </div>
+                    <p>7 dias de refeições saudáveis sem açúcar refinado!</p>
+                    <div class="group-progress">
+                        <div class="group-progress-fill" style="width: 42%"></div>
+                    </div>
+                    <div class="progress-info">
+                        <span>42% completo</span>
+                        <span>Dia 3 de 7</span>
+                    </div>
+                    <button class="challenge-action">
+                        Participar <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+                
+                <div class="group-challenge fade-in">
+                    <div class="group-header">
+                        <div class="group-avatar">MS</div>
+                        <div class="group-info">
+                            <div class="group-name">Meditação em Grupo</div>
+                            <div class="group-members">15 membros</div>
+                        </div>
+                    </div>
+                    <p>Meditação coletiva diária de 15 minutos por 7 dias!</p>
+                    <div class="group-progress">
+                        <div class="group-progress-fill" style="width: 28%"></div>
+                    </div>
+                    <div class="progress-info">
+                        <span>28% completo</span>
+                        <span>Dia 2 de 7</span>
+                    </div>
+                    <button class="challenge-action">
+                        Participar <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Settings Section -->
+        <section id="settings" class="content-section">
+            <h2 class="section-title"><i class="fas fa-cog"></i> Configurações</h2>
+            
+            <div class="settings-panel">
+                <div class="settings-group">
+                    <h3 class="settings-title">Preferências de Notificações</h3>
+                    
+                    <div class="settings-option">
+                        <div class="option-info">
+                            <div class="option-title">Lembretes de Desafios</div>
+                            <div class="option-desc">Receba notificações para completar desafios diários</div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="challengeReminders" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="settings-option">
+                        <div class="option-info">
+                            <div class="option-title">Lembretes de Metas</div>
+                            <div class="option-desc">Notificações sobre seu progresso em metas</div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="goalReminders" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="settings-option">
+                        <div class="option-info">
+                            <div class="option-title">Notificações de Conquistas</div>
+                            <div class="option-desc">Alertas quando você desbloquear novas conquistas</div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="achievementNotifications" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="settings-group">
+                    <h3 class="settings-title">Integrações</h3>
+                    
+                    <div class="settings-option">
+                        <div class="option-info">
+                            <div class="option-title">Google Fit</div>
+                            <div class="option-desc">Sincronize dados de atividade física com Google Fit</div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="googleFitIntegration">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="settings-option">
+                        <div class="option-info">
+                            <div class="option-title">Apple Health</div>
+                            <div class="option-desc">Conecte com Apple Health para sincronizar dados</div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="appleHealthIntegration">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="settings-option">
+                        <div class="option-info">
+                            <div class="option-title">MyFitnessPal</div>
+                            <div class="option-desc">Sincronize dados nutricionais com MyFitnessPal</div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="myFitnessPalIntegration">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="api-status" id="apiStatus">
+                        <i class="fas fa-plug"></i>
+                        <span>Conectando aos serviços...</span>
+                        <div class="spinner" style="margin-left: 10px;"></div>
+                    </div>
+                </div>
+                
+                <div class="settings-group">
+                    <h3 class="settings-title">Exportação de Dados</h3>
+                    
+                    <div class="settings-option">
+                        <div class="option-info">
+                            <div class="option-title">Exportar Dados de Progresso</div>
+                            <div class="option-desc">Baixe um relatório completo do seu progresso</div>
+                        </div>
+                        <button class="btn btn-primary" onclick="exportData('full')">
+                            <i class="fas fa-download"></i> Exportar
+                        </button>
+                    </div>
+                    
+                    <div class="settings-option">
+                        <div class="option-info">
+                            <div class="option-title">Exportar Conquistas</div>
+                            <div class="option-desc">Baixe todas as suas conquistas</div>
+                        </div>
+                        <button class="btn btn-primary" onclick="exportData('achievements')">
+                            <i class="fas fa-download"></i> Exportar
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="settings-group">
+                    <h3 class="settings-title">Aparência</h3>
+                    
+                    <div class="settings-option">
+                        <div class="option-info">
+                            <div class="option-title">Modo Escuro</div>
+                            <div class="option-desc">Ativar/desativar modo escuro</div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="darkModeToggle">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1485,6 +2190,32 @@
             <div class="form-actions">
                 <button class="btn btn-outline" style="color: var(--dark); border-color: var(--gray);" id="cancelRegister">Cancelar</button>
                 <button class="btn btn-primary" id="confirmRegister">Criar conta</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Group Modal -->
+    <div class="modal" id="createGroupModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Criar Novo Grupo</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="form-group">
+                <label for="groupName">Nome do Grupo</label>
+                <input type="text" id="groupName" placeholder="Digite o nome do grupo">
+            </div>
+            <div class="form-group">
+                <label for="groupDescription">Descrição</label>
+                <input type="text" id="groupDescription" placeholder="Descreva o propósito do grupo">
+            </div>
+            <div class="form-group">
+                <label for="groupGoal">Meta do Grupo</label>
+                <input type="text" id="groupGoal" placeholder="Ex: 30km de corrida em 7 dias">
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-outline" style="color: var(--dark); border-color: var(--gray);" id="cancelCreateGroup">Cancelar</button>
+                <button class="btn btn-primary" id="confirmCreateGroup">Criar Grupo</button>
             </div>
         </div>
     </div>
@@ -1550,6 +2281,7 @@
         const registerBtn = document.getElementById('registerBtn');
         const loginModal = document.getElementById('loginModal');
         const registerModal = document.getElementById('registerModal');
+        const createGroupModal = document.getElementById('createGroupModal');
         const closeModalButtons = document.querySelectorAll('.close-modal');
         const userPointsElement = document.getElementById('userPoints');
         const dailyProgress = document.getElementById('dailyProgress');
@@ -1569,6 +2301,13 @@
         const welcomeTitle = document.getElementById('welcomeTitle');
         const navLinks = document.querySelectorAll('.nav-link');
         const contentSections = document.querySelectorAll('.content-section');
+        const themeToggle = document.getElementById('themeToggle');
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const createGroupBtn = document.getElementById('createGroupBtn');
+        const confirmCreateGroup = document.getElementById('confirmCreateGroup');
+        const cancelCreateGroup = document.getElementById('cancelCreateGroup');
+        const apiStatus = document.getElementById('apiStatus');
+        const notificationContainer = document.getElementById('notificationContainer');
 
         // Current state
         let currentDifficulty = 'easy';
@@ -1579,6 +2318,8 @@
         let streak = 0;
         let dailyCompleted = 0;
         let weeklyCompleted = 0;
+        let notificationTimeout;
+        let apiCheckInterval;
 
         // Initialize the app
         function init() {
@@ -1589,6 +2330,15 @@
                 loadUserData();
                 showUserMenu();
             }
+            
+            // Load theme preference
+            loadThemePreference();
+            
+            // Setup notifications
+            setupNotifications();
+            
+            // Setup API status check
+            checkAPIStatus();
             
             displayChallenges();
             setupEventListeners();
@@ -1693,6 +2443,9 @@
                     
                     // Show celebration effect
                     showCelebration(challenge.points);
+                    
+                    // Send notification
+                    showNotification(`Desafio concluído! Você ganhou ${challenge.points} pontos.`, 'success');
                     
                     // Refresh display
                     displayChallenges();
@@ -1832,6 +2585,198 @@
             });
         }
 
+        // Load theme preference from localStorage
+        function loadThemePreference() {
+            const darkModeEnabled = localStorage.getItem('healthBoostDarkMode') === 'true';
+            if (darkModeEnabled) {
+                document.body.classList.add('dark-mode');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                if (darkModeToggle) darkModeToggle.checked = true;
+            }
+        }
+
+        // Toggle dark mode
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            
+            // Save preference
+            localStorage.setItem('healthBoostDarkMode', isDarkMode);
+            
+            // Update toggle button
+            themeToggle.innerHTML = isDarkMode ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            
+            // Show notification
+            showNotification(`Modo ${isDarkMode ? 'escuro' : 'claro'} ativado`, 'info');
+        }
+
+        // Show notification
+        function showNotification(message, type = 'info') {
+            // Clear previous timeout
+            if (notificationTimeout) {
+                clearTimeout(notificationTimeout);
+            }
+            
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            
+            let icon = 'fa-info-circle';
+            if (type === 'success') icon = 'fa-check-circle';
+            if (type === 'warning') icon = 'fa-exclamation-triangle';
+            
+            notification.innerHTML = `
+                <div class="notification-icon">
+                    <i class="fas ${icon}"></i>
+                </div>
+                <div>${message}</div>
+            `;
+            
+            notificationContainer.appendChild(notification);
+            
+            // Remove notification after 5 seconds
+            notificationTimeout = setTimeout(() => {
+                notification.remove();
+            }, 5000);
+        }
+
+        // Setup notifications based on user preferences
+        function setupNotifications() {
+            // Check if notifications are enabled
+            const notificationsEnabled = localStorage.getItem('healthBoostNotifications') !== 'false';
+            
+            if (notificationsEnabled && currentUser) {
+                // Schedule daily reminder
+                scheduleDailyReminder();
+                
+                // Show welcome notification
+                showNotification('Lembrete: Complete seus desafios diários hoje!', 'info');
+            }
+        }
+
+        // Schedule daily reminder notification
+        function scheduleDailyReminder() {
+            // Check if we've already shown a notification today
+            const lastNotificationDate = localStorage.getItem('healthBoostLastNotification');
+            const today = new Date().toDateString();
+            
+            if (lastNotificationDate !== today) {
+                // Show notification at 9 AM
+                const now = new Date();
+                const targetTime = new Date();
+                targetTime.setHours(9, 0, 0, 0);
+                
+                // If it's already past 9 AM, schedule for tomorrow
+                if (now > targetTime) {
+                    targetTime.setDate(targetTime.getDate() + 1);
+                }
+                
+                const timeUntilNotification = targetTime.getTime() - now.getTime();
+                
+                setTimeout(() => {
+                    showNotification('💪 Lembrete: Complete seus desafios diários hoje!', 'info');
+                    localStorage.setItem('healthBoostLastNotification', new Date().toDateString());
+                    
+                    // Schedule next notification
+                    scheduleDailyReminder();
+                }, timeUntilNotification);
+            }
+        }
+
+        // Check API status
+        function checkAPIStatus() {
+            // Simulate API connection check
+            apiStatus.innerHTML = '<i class="fas fa-plug"></i> Conectando aos serviços... <div class="spinner" style="margin-left: 10px;"></div>';
+            
+            // Simulate API response after 2 seconds
+            setTimeout(() => {
+                const isConnected = Math.random() > 0.3; // 70% chance of success
+                
+                if (isConnected) {
+                    apiStatus.className = 'api-status status-connected';
+                    apiStatus.innerHTML = '<i class="fas fa-check-circle"></i> Conectado aos serviços de saúde';
+                } else {
+                    apiStatus.className = 'api-status status-disconnected';
+                    apiStatus.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Não foi possível conectar aos serviços';
+                }
+            }, 2000);
+        }
+
+        // Share achievement on social media
+        function shareAchievement(platform) {
+            let url = '';
+            let text = 'Acabei de conquistar mais pontos no HealthBoost!';
+            
+            switch(platform) {
+                case 'facebook':
+                    url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=${encodeURIComponent(text)}`;
+                    break;
+                case 'twitter':
+                    url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(window.location.href)}`;
+                    break;
+                case 'whatsapp':
+                    url = `https://wa.me/?text=${encodeURIComponent(text + ' ' + window.location.href)}`;
+                    break;
+            }
+            
+            if (url) {
+                window.open(url, '_blank');
+            }
+        }
+
+        // Export data
+        function exportData(type) {
+            let message = '';
+            
+            switch(type) {
+                case 'pdf':
+                    message = 'Preparando relatório em PDF...';
+                    break;
+                case 'csv':
+                    message = 'Exportando dados em CSV...';
+                    break;
+                case 'image':
+                    message = 'Gerando imagem para compartilhamento...';
+                    break;
+                case 'full':
+                    message = 'Exportando todos os dados de progresso...';
+                    break;
+                case 'achievements':
+                    message = 'Exportando conquistas...';
+                    break;
+            }
+            
+            showNotification(message, 'info');
+            
+            // Simulate export process
+            setTimeout(() => {
+                showNotification('Exportação concluída com sucesso!', 'success');
+            }, 2000);
+        }
+
+        // Export ranking
+        function exportRanking(type) {
+            let message = '';
+            
+            switch(type) {
+                case 'pdf':
+                    message = 'Preparando ranking em PDF...';
+                    break;
+                case 'csv':
+                    message = 'Exportando ranking em CSV...';
+                    break;
+                case 'image':
+                    message = 'Gerando imagem do ranking...';
+                    break;
+            }
+            
+            showNotification(message, 'info');
+            
+            // Simulate export process
+            setTimeout(() => {
+                showNotification('Ranking exportado com sucesso!', 'success');
+            }, 2000);
+        }
+
         // Set up event listeners
         function setupEventListeners() {
             // Difficulty tabs
@@ -1877,6 +2822,34 @@
                 });
             });
             
+            // Theme toggle
+            themeToggle.addEventListener('click', toggleDarkMode);
+            if (darkModeToggle) {
+                darkModeToggle.addEventListener('change', toggleDarkMode);
+            }
+            
+            // Create group button
+            createGroupBtn.addEventListener('click', () => {
+                createGroupModal.style.display = 'flex';
+            });
+            
+            confirmCreateGroup.addEventListener('click', () => {
+                const groupName = document.getElementById('groupName').value;
+                if (groupName) {
+                    showNotification(`Grupo "${groupName}" criado com sucesso!`, 'success');
+                    createGroupModal.style.display = 'none';
+                    
+                    // Clear form
+                    document.getElementById('groupName').value = '';
+                    document.getElementById('groupDescription').value = '';
+                    document.getElementById('groupGoal').value = '';
+                }
+            });
+            
+            cancelCreateGroup.addEventListener('click', () => {
+                createGroupModal.style.display = 'none';
+            });
+            
             // Modal controls
             loginBtn.addEventListener('click', () => {
                 loginModal.style.display = 'flex';
@@ -1890,6 +2863,7 @@
                 button.addEventListener('click', () => {
                     loginModal.style.display = 'none';
                     registerModal.style.display = 'none';
+                    createGroupModal.style.display = 'none';
                 });
             });
             
@@ -1909,6 +2883,9 @@
                 if (event.target === registerModal) {
                     registerModal.style.display = 'none';
                 }
+                if (event.target === createGroupModal) {
+                    createGroupModal.style.display = 'none';
+                }
             });
             
             // Login and register actions
@@ -1917,6 +2894,55 @@
             
             // Logout action
             logoutBtn.addEventListener('click', handleLogout);
+            
+            // Notification preferences
+            const notificationToggles = [
+                'challengeReminders',
+                'goalReminders',
+                'achievementNotifications'
+            ];
+            
+            notificationToggles.forEach(toggleId => {
+                const toggle = document.getElementById(toggleId);
+                if (toggle) {
+                    // Load saved preference
+                    const savedValue = localStorage.getItem(`healthBoost${toggleId.charAt(0).toUpperCase() + toggleId.slice(1)}`);
+                    if (savedValue !== null) {
+                        toggle.checked = savedValue === 'true';
+                    }
+                    
+                    // Save on change
+                    toggle.addEventListener('change', () => {
+                        localStorage.setItem(`healthBoost${toggleId.charAt(0).toUpperCase() + toggleId.slice(1)}`, toggle.checked);
+                        showNotification('Preferências de notificação salvas', 'success');
+                    });
+                }
+            });
+            
+            // API integration toggles
+            const apiToggles = [
+                'googleFitIntegration',
+                'appleHealthIntegration',
+                'myFitnessPalIntegration'
+            ];
+            
+            apiToggles.forEach(toggleId => {
+                const toggle = document.getElementById(toggleId);
+                if (toggle) {
+                    // Load saved preference
+                    const savedValue = localStorage.getItem(`healthBoost${toggleId.charAt(0).toUpperCase() + toggleId.slice(1)}`);
+                    if (savedValue !== null) {
+                        toggle.checked = savedValue === 'true';
+                    }
+                    
+                    // Save on change
+                    toggle.addEventListener('change', () => {
+                        localStorage.setItem(`healthBoost${toggleId.charAt(0).toUpperCase() + toggleId.slice(1)}`, toggle.checked);
+                        showNotification('Configurações de integração salvas', 'success');
+                        checkAPIStatus();
+                    });
+                }
+            });
         }
 
         // Handle login
@@ -1946,6 +2972,9 @@
                 
                 // Update UI
                 displayChallenges();
+                
+                // Setup notifications for logged in user
+                setupNotifications();
             } else {
                 alert('E-mail ou senha incorretos.');
             }
@@ -2002,6 +3031,9 @@
             document.getElementById('registerEmail').value = '';
             document.getElementById('registerPassword').value = '';
             document.getElementById('registerConfirmPassword').value = '';
+            
+            // Setup notifications for new user
+            setupNotifications();
             
             alert(`Conta criada com sucesso! Bem-vindo(a) ao HealthBoost, ${name}!`);
         }
